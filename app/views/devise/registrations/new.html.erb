@@ -9,7 +9,7 @@
   </div>
   
   <div class="field">
-    <%= f.attachment_field :image %>
+    <%= f.attachment_field :profile_image %>
   </div>  
 
   <div class="field">
@@ -29,7 +29,7 @@
     <%= f.label :パスワード再入力 %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+  
   <div class="field">
     <%= f.label :身長 %><br />
     <%= f.text_field :height, autofocus: true %>
@@ -38,6 +38,12 @@
   <div class="field">
     <%= f.label :体重 %><br />
     <%= f.text_field :weight, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :性別 %><br />
+    <%= f.select :gender, User.genders.keys, autofocus: true %>
+    <!--モデル名＋モデルに記載のカラムの複数形(なぜなら選択肢は複数あるため-->
   </div>
   
   <div class="field">
