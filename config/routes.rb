@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end  
   # フォロー機能はuserにネストさせている
   
-  resources :posts, only: [:new, :create, :show, :destroy, :diary] do
+  resources :posts, only: [:index, :new, :create, :show, :destroy, :diary] do
     resources :comments, only: [:create, :destroy]
     resources :like, only: [:create, :destroy]
     collection do

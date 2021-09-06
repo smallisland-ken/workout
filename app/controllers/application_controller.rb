@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
       # before_action :authenticate_user!,except: [:show, :top]
       # バリデーション権限(後ほど検討)
 
+      # フラッシュメッセージがdefaultではalertとnoticeしかないので追加
+      # 参考記事 https://note.com/asm_18/n/n22e76d73760b
+      add_flash_types :success, :info, :warning, :danger
+
       before_action :configure_permitted_parameters, if: :devise_controller?
 
       def after_sign_in_path_for(resource)

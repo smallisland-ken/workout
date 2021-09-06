@@ -19,10 +19,10 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
-            flash[:notice] = "登録に成功しました！"
-            redirect_to root_path 
+           redirect_to root_path, success: 'アップデートに成功しました！' 
         else
-            render edit
+            flash.now[:alert] ="必要項目を記入してください。"
+            render :edit
         end
     end
     
