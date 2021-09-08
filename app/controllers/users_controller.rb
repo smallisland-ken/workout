@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
     
     def friends
-        @friend = User.all
+        @friends = User.all
     end
     
     def show

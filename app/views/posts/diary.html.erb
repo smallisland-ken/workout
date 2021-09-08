@@ -1,1 +1,29 @@
-日記
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md7 col-lg-9 mt-3 mx-auto">
+            <h2>筋トレ日記一覧</h2>
+                <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th>日付<th>
+                        <th>時刻</th>
+                        <th>筋トレ場所</th>
+                        <th>タグ付け</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @diary.each do |diary| %>
+                    <tr>
+                        <td><%= link_to post_path(diary) do %>
+                            <td><%= diary.date_on %></td>
+                            <% end %>
+                            <td><%= diary.time_at %></td>
+                            <td><%= diary.place %></td>
+                         <% end %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

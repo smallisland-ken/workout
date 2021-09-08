@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-            <h2>筋トレ日記投稿</h2>
+            <h2>筋トレ記録編集</h2>
             
             <!--ここからエラーメッセージ-->
             <% if @post.errors.any? %>
@@ -18,7 +18,7 @@
             <% end %>
             <!--ここまでエラーメッセージ-->
                 
-           <%= form_with model:@post, local:true do |f| %>
+           <%= form_with model:@post, url:post_path, local:true do |f| %>
                 <div class="form-group">
                     <label>日付入力</label>
                     <%= f.date_select :date_on, autofocus: true, class: "form-control name" %>
@@ -40,17 +40,17 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>タグ付け</label>
-                    <%= f.text_area :tag_id, class: "form-control-file", placeholder: "タグが複数の場合は','で区切ってください" %>
-                </div>
-               
+                <label>タグ付け</label>
+                    <%= f.text_field :tag_id, value:@tags, class: "form-control-file", placeholder: "タグが複数の場合は','で区切ってください" %>
+                </div>  
+
                 <div class="form-group">
                 <label>筋トレ内容</label>
                     <%= f.text_area :content , class: "form-control-file " %>
                 </div>
               
                 <div class="form-group">
-                    <%= f.submit "筋トレ記録を投稿", class: "btn btn-secondary" %>
+                    <%= f.submit "筋トレ記録を更新", class: "btn btn-secondary" %>
                 </div>
             <% end %>
         </div>

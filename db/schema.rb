@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_133206) do
     t.integer "user_id", null: false
     t.date "date_on", null: false
     t.time "time_at", null: false
-    t.integer "place", null: false
+    t.string "place", null: false
     t.text "content", null: false
     t.string "image_id"
     t.datetime "created_at", null: false
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 2021_09_04_133206) do
   end
 
   create_table "tag_relationships", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_tag_relationships_on_post_id"

@@ -1,1 +1,39 @@
-筋トレ友達一覧
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md7 col-lg-9 mt-3 mx-auto">
+            <h2>筋トレ仲間一覧</h2>
+                <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th>プロフィール画像</th>
+                        <th>友達一覧</th>
+                        <th>身長</th>
+                        <th>体重</th>
+                        <th>自己紹介</th>
+                        <th>フォローボタン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @friends.each do |friends| %>
+                    <tr>
+                        <td><%= link_to post_path(friends) do %>
+                            <%= attachment_image_tag friends, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+                            <% end %>
+                            <td><%= friends.nickname %></td>
+                            <td><%= friends.height %></td>
+                            <td><%= friends.weight %></td>                
+                            <td><%= friends.introduction %></td>  
+                            <td><% if current_user.following?(friends) %>
+                                <%= link_to "Unfollow", user_favorites_path(friends), method: :delete %>
+                                <% else %>
+                                <%= link_to "Follow", user_favorites_path(friends), method: :post %>
+                                <% end %>
+                            </td>
+                        <% end %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

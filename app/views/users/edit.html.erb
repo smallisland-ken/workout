@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <div class="col-sm-12 col-md-8 col-lg-5 mt-3 mx-auto">
             <h2>マイページ</h2>
             
             <!--ここからエラーメッセージ-->
@@ -19,7 +19,7 @@
             <!--ここまでエラーメッセージ-->
                 
            <%= form_with model:@user, local:true do |f| %>
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <label>ニックネーム</label>
                     <%= f.text_field :nickname, autofocus: true, class: "form-control name" %>
                 </div>
