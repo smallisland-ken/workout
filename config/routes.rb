@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'followers' => 'favoritess#followers', as: 'followers'
   end  
 
-  resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
+  resources :posts do
     resources :comments, only: [:create, :destroy]
     resources :like, only: [:create, :destroy]
     # 筋トレ投稿内容を一覧表示のためのURL

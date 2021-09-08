@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
       # フラッシュメッセージがdefaultではalertとnoticeしかないので追加
       # 参考記事 https://note.com/asm_18/n/n22e76d73760b
-      add_flash_types :success, :info, :warning, :danger
+      add_flash_types :success, :info, :warning, :danger, :notice
 
       before_action :configure_permitted_parameters, if: :devise_controller?
 

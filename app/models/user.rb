@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
       
   has_many :posts, dependent: :destroy
-  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   
   # フォロー機能のアソシエーション
   has_many :favorites, class_name: "Favorite", foreign_key: "follower_id", dependent: :destroy

@@ -6,6 +6,11 @@ class PostsController < ApplicationController
     end
 
     def show
+        @post = Post.find(params[:id])
+        @tags = @post.tags.pluck(:name).join(',')
+        
+        # コメント用のコード
+        @comment = Comment.new
     end
     
     def index
@@ -22,7 +27,7 @@ class PostsController < ApplicationController
         tags = params[:post][:tag_id].split(',')
         if @post.save
         @post.save_tags(tags)
-        redirect_to root_path, notice: '新規投稿に成功しました！'
+        redirect_to root_path, success: '新規投稿に成功しました！'
         else
             flash.now[:alert] = "必要項目を記入してください。"
             render :new
@@ -39,7 +44,7 @@ class PostsController < ApplicationController
         tags = params[:post][:tag_id].split(',')
         if @post.update_attributes(post_params)
         @post.update_tags(tags)
-        redirect_to diary_posts_path, notice: '更新に成功しました！'
+        redirect_to diary_posts_path, success: '更新に成功しました！'
         else
             flash.now[:alert] = "必要項目を記入してください。"
             render :edit
@@ -47,6 +52,9 @@ class PostsController < ApplicationController
     end
     
     def destroy
+        post = Post.find(params[:id])
+        post.destroy
+        redirect_to posts_path, notice: '削除に成功しました！'
     end
 
     private
