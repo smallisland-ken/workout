@@ -7,7 +7,7 @@ class Post < ApplicationRecord
     
     #投稿のコメントへのアソシエーション
     has_many :comments, dependent: :destroy
-      
+    
     # タグ付けのアソシエーション
     has_many :tag_relationships, dependent: :destroy
     has_many :tags, through: :tag_relationships

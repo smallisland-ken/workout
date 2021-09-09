@@ -8,14 +8,17 @@ Rails.application.routes.draw do
   get 'users/friends' => 'users#friends'
  
   devise_for :users
+  
   # users用のURL用に設定
   resources :users do
+    
   # フォロー機能はuserにネストさせている
   resource :favorites, only: [:create, :destroy]
   get 'followings' => 'favorites#followings', as: 'followings'
   get 'followers' => 'favoritess#followers', as: 'followers'
   end  
 
+  # 投稿機能にネストさせる形でコメントといいね機能を設定
   resources :posts do
     resources :comments, only: [:create, :destroy]
     resources :like, only: [:create, :destroy]
@@ -23,9 +26,7 @@ Rails.application.routes.draw do
     collection do
       get 'diary'
     end
-    
   end
-  # 投稿機能にネストさせる形でコメントといいね機能を設定
   
   resources :notifications, only: [:index]  
   # 通知機能一覧用のルート

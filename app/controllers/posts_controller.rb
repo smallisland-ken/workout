@@ -7,10 +7,13 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find(params[:id])
-        @tags = @post.tags.pluck(:name).join(',')
-        
-        # コメント用のコード
         @comment = Comment.new
+        # コメント用のコード
+        @post_comments = @post.comments
+
+        # タグ用のコード
+        @tags = @post.tags.pluck(:name).join(',')
+
     end
     
     def index
