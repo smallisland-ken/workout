@@ -1,8 +1,8 @@
 class CreateTagRelationships < ActiveRecord::Migration[5.2]
   def change
     create_table :tag_relationships do |t|
-      t.references :post, foreign_key: true
-      t.references :tag, foreign_key: true
+      t.references :post, foreign_key: true, null: false
+      t.references :tag, foreign_key: true, null: false
       t.timestamps
       
       # referencesにすることでindexが自動付与
