@@ -14,7 +14,8 @@
                             <div>
                                 <i class="far fa-smile"></i> <%= @post.user.nickname %> 
                                 <i class="far fa-comment"></i> Comments：<%= @post.comments.count %> <i class="far fa-thumbs-up"></i> Likes：
-                            </div>
+                                <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like_show', locals: {post: @post}%></span>
+                        </div>
                             <div class="fas fa-tags mt-2">
                                 <%= @tags %>
                             </div>
@@ -31,7 +32,7 @@
                             <div class="col-12 mx-auto">
                                 <%= form_with(model:[@post, @comment], local: true) do |f| %>
                                     <%= f.text_area :content, rows:'5',placeholder: "Any comments on this post?", class:"form-control mt-3"  %>
-                                    <%= f.submit "Submit", class: "btn btn-primary mt-3" %>
+                                    <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
                                 <% end %>
                                 <% @post_comments.each do |comment| %>
                                     <%= comment.user.nickname %>

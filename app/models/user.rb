@@ -31,6 +31,9 @@ class User < ApplicationRecord
       followings.include?(user)
   end
  
+  #いいね機能のメソッド
+  has_many :likes, dependent: :destroy
+ 
   is_impressionable
   attachment :profile_image
          

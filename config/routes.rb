@@ -15,13 +15,13 @@ Rails.application.routes.draw do
   # フォロー機能はuserにネストさせている
   resource :favorites, only: [:create, :destroy]
   get 'followings' => 'favorites#followings', as: 'followings'
-  get 'followers' => 'favoritess#followers', as: 'followers'
+  get 'followers' => 'favorites#followers', as: 'followers'
   end  
 
   # 投稿機能にネストさせる形でコメントといいね機能を設定
   resources :posts do
     resources :comments, only: [:create, :destroy]
-    resources :like, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
     # 筋トレ投稿内容を一覧表示のためのURL
     collection do
       get 'diary'
