@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-3">
-            <h2>Timeline</h2>
+            <h2><i>Timeline</i></h2>
              <% @posts.each do |post| %>
                 <div class="card w-70 mx-auto mt-4 shadow-lg">
                     <%= link_to post_path(post) do %>
@@ -15,10 +15,12 @@
                             <div class="col-10">
                                 <p class="card-title"></p>
                                 <div>
-                                    <i class="fas fa-user"></i> <%= post.user.nickname %>
+                                    <i class="far fa-smile"></i> <%= post.user.nickname %>
+                                    <i class="far fa-comment"></i> Comments：<%= post.comments.count %> <i class="far fa-thumbs-up"></i> Likes： 
+                                    <span id="likes_<%= post.id %>"><%= render partial: 'likes/like', locals: {post: post}%></span>
                                 </div>
                                 <div class="fas fa-tags mt-2">
-                                    
+                                    <%= post.tags.name %>
                                 </div>
                                 <div class="mt-2">
                                 <%= post.content %>

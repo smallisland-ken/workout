@@ -8,6 +8,14 @@ class Post < ApplicationRecord
     #投稿のコメントへのアソシエーション
     has_many :comments, dependent: :destroy
     
+    # いいねのアソシエーション
+    has_many :likes, dependent: :destroy
+    
+    # いいね判定メソッド
+    def liked_by?(user)
+        likes.where(user_id: user.id).exists?
+    end
+    
     # タグ付けのアソシエーション
     has_many :tag_relationships, dependent: :destroy
     has_many :tags, through: :tag_relationships

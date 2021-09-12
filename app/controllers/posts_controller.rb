@@ -13,7 +13,6 @@ class PostsController < ApplicationController
 
         # タグ用のコード
         @tags = @post.tags.pluck(:name).join(',')
-
     end
     
     def index
