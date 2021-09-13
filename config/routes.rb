@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
   
-  # 通知機能一覧用のルート
-  resources :notifications, only: [:index]  
+  # 通知機能のルート
+  resources :notifications, only: [:index, :destroy]  
   
 end

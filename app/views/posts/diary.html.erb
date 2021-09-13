@@ -19,6 +19,7 @@
                             <% end %>
                             <td><%= diary.time_at %></td>
                             <td><%= diary.place %></td>
+                            <td><%= diary.tags.pluck(:name).join(',') %></td>
                          <% end %>
                         </td>
                     </tr>

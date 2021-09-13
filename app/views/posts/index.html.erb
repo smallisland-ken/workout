@@ -20,7 +20,7 @@
                                     <span id="likes_<%= post.id %>"><%= render partial: 'likes/like', locals: {post: post}%></span>
                                 </div>
                                 <div class="fas fa-tags mt-2">
-                                    <%= post.tags.name %>
+                                    <%= post.tags.pluck(:name).join(',') %>
                                 </div>
                                 <div class="mt-2">
                                 <%= post.content %>

@@ -6,10 +6,8 @@ class NotificationsController < ApplicationController
         end        
     end
     
-    def destroy_all
+    def destroy
         @notifications = current_user.reverse_notifications.destroy_all
         redirect_to root_path
     end
 end
-
-

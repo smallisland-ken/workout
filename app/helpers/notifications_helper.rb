@@ -16,4 +16,10 @@ module NotificationsHelper
             tag.a(@visitor.name, href:users_user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にコメントしました"
       end
   end
+  
+  def unread_notifications
+    # notificationテーブルでデフォルトでfalseが入っている
+    @notifications = current_user.reverse_notifications.where(checked: false)
+  end
+  
 end

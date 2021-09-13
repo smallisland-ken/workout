@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     # 筋トレの記録一覧を表示するためのアクション
     def diary
         @diary = current_user.posts.all
+        # タグ用のコード
     end
 
     def create
