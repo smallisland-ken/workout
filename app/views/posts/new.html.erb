@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-            <h2>筋トレ日記投稿</h2>
+            <h2 class="mt-3"><i>New Post</i></h2>
             
             <!--ここからエラーメッセージ-->
             <% if @post.errors.any? %>
@@ -20,13 +20,13 @@
                 
            <%= form_with model:@post, local:true do |f| %>
                 <div class="form-group">
-                    <label>日付入力</label>
-                    <%= f.date_select :date_on, autofocus: true, class: "form-control name" %>
+                    <label class="mt-2">日付入力</label>
+                    <p><%= f.date_select :date_on, autofocus: true, class: "form-control name" %></p>
                 </div>
                
                 <div class="form-group">
                 <label>時刻入力</label>
-                    <%= f.time_select :time_at, class: "form-control-file user_image" %>
+                    <p><%= f.time_select :time_at, class: "form-control-file user_image" %></p>
                 </div>
               
                 <div class="form-group">
@@ -46,11 +46,11 @@
                
                 <div class="form-group">
                 <label>筋トレ内容</label>
-                    <%= f.text_area :content , class: "form-control-file " %>
+                    <%= f.text_area :content , class: "form-control-file" %>
                 </div>
               
                 <div class="form-group">
-                    <%= f.submit "筋トレ記録を投稿", class: "btn btn-secondary" %>
+                    <%= f.submit "submit", class: "btn btn-primary" %>
                 </div>
             <% end %>
         </div>

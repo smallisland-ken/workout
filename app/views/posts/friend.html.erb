@@ -1,17 +1,11 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
     <div class="row">
-        <div class="col-md-3 mt-3">
-            <h2><i>My Profile</i></h2>
-            <div class="mt-4">
-                <%= render "posts/profile", profile: @profile %>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-9 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-        <h2><i>Timeline</i></h2>
-            <% @posts.each do |post| %>
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-3">
+            <h2><i>Friend's Timeline</i></h2>
+             <% @friend_post.each do |post| %>
                 <div class="card w-70 mx-auto mt-4 shadow-lg">
                     <%= link_to post_path(post) do %>
-                    <%= attachment_image_tag post, :image, class:"card-img-top"; %>
+                        <%= attachment_image_tag post, :image, class:"card-img-top"; %>
                     <% end %>
                     <div class="card-body">
                         <div class="row">
@@ -29,18 +23,14 @@
                                     <%= post.tags.pluck(:name).join(',') %>
                                 </div>
                                 <div class="mt-2">
-                                    <%= post.content %>
-                                </div>
+                                <%= post.content %>
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             <% end %>
         </div>
-    </div>
-    <div class="text-right">
-        <%= link_to new_post_path do %>
-        <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
-        <% end %> 
+      </div>
     </div>
 </div>

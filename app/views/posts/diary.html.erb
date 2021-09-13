@@ -5,21 +5,23 @@
                 <table class="table mt-4">
                 <thead>
                     <tr>
-                        <th>日付<th>
-                        <th>時刻</th>
-                        <th>筋トレ場所</th>
-                            <th>タグ付け</th>
+                        <th class="text-center">日付</th>
+                        <th class="text-center">時刻</th>
+                        <th class="text-center">筋トレ場所</th>
+                        <th class="text-center">タグ付け</th>
                     </tr>
                 </thead>
                 <tbody>
                 <% @diary.each do |diary| %>
                     <tr>
-                        <td><%= link_to post_path(diary) do %>
-                            <td><%= diary.date_on %></td>
+                        <td class="text-center">
+                        <%= link_to post_path(diary) do %>
+                            <%= diary.date_on %>
                             <% end %>
-                            <td><%= diary.time_at %></td>
-                            <td><%= diary.place %></td>
-                            <td><%= diary.tags.pluck(:name).join(',') %></td>
+                            </td>
+                        <td class="text-center"><%= diary.time_at %></td>
+                        <td class="text-center"><%= diary.place %></td>
+                        <td class="text-center"><%= diary.tags.pluck(:name).join(',') %></td>
                          <% end %>
                         </td>
                     </tr>

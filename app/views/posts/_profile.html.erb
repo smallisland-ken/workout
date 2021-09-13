@@ -1,0 +1,13 @@
+<div class="card shadow-lg">
+    <%= link_to edit_user_path(profile) do %>
+        <%= attachment_image_tag profile, :profile_image, class:"card-img-top"; %>
+    <% end %>
+    <div class="card-body text-center">
+        <div>
+            <p><i class="far fa-user"></i> <%= profile.nickname %></p>
+            <p>身長：<%= profile.height %>cm 体重：<%= profile.weight %>kg</p>
+            <p>Followings <%= link_to profile.followings.count, user_followings_path(profile) %> 人</p>
+            <p>Followers <%= link_to profile.followers.count, user_followings_path(profile) %> 人</p>
+        </div>
+    </div>
+</div>
