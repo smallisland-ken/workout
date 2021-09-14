@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
     
+    # 新規投稿用
     def new
         @post = Post.new
     end
 
+    # 投稿詳細用
     def show
         @post = Post.find(params[:id])
         @comment = Comment.new
@@ -15,12 +17,23 @@ class PostsController < ApplicationController
         @tags = @post.tags.pluck(:name).join(',')
     end
     
+    # タイムライン
     def index
         @posts = Post.all
+        # プロフィール用のfind
+        @profile = User.find(current_user.id)
+    end
+
+    #友達の投稿一覧
+    def friend
+        @friend = User.find(params[:id])
+        # 特定のユーザーの投稿すべてのデータ
+        @friend_post = @friend.posts
     end
 
     # 筋トレの記録一覧を表示するためのアクション
     def diary
+        # タグ用のコード
         @diary = current_user.posts.all
     end
 

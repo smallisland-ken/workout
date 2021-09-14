@@ -31,6 +31,10 @@
                                 <% end %>
                             </li>
                             <li>
+                                <!--通知があった際に色が出るように表示-->
+                                <% if unread_notifications.any? %>
+                                  <i class="fa fa-circle" style="color: gold;"></i>
+                                   <% end %>
                                 <%= link_to notifications_path, method: :get, class: 'fas fa-bell nav-link text-light' do %>
                                 通知機能
                                 <% end %>

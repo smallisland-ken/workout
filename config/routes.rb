@@ -25,10 +25,11 @@ Rails.application.routes.draw do
     # 筋トレ投稿内容を一覧表示のためのURL
     collection do
       get 'diary'
+      get 'friend/:id', to: 'posts#friend', as: 'friend'
     end
   end
   
-  resources :notifications, only: [:index]  
-  # 通知機能一覧用のルート
+  # 通知機能のルート
+  resources :notifications, only: [:index, :destroy]  
   
 end

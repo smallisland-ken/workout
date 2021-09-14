@@ -5,31 +5,34 @@
                 <table class="table mt-4">
                 <thead>
                     <tr>
-                        <th>プロフィール画像</th>
-                        <th>友達一覧</th>
-                        <th>身長</th>
-                        <th>体重</th>
-                        <th>自己紹介</th>
-                        <th>フォローボタン</th>
+                        <th class="text-center">プロフィール画像</th>
+                        <th class="text-center">友達一覧</th>
+                        <th class="text-center">身長</th>
+                        <th class="text-center">体重</th>
+                        <th class="text-center">自己紹介</th>
+                        <th class="text-center">フォローボタン</th>
                     </tr>
                 </thead>
                 <tbody>
                 <% @friends.each do |friends| %>
                     <tr>
-                        <td><%= link_to post_path(friends) do %>
+                        <td class="text-center"><%= link_to friend_posts_path(friends) do %>
                             <%= attachment_image_tag friends, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %></td>
                             <% end %>
-                            <td><%= friends.nickname %></td>
-                            <td><%= friends.height %></td>
-                            <td><%= friends.weight %></td>                
-                            <td><%= friends.introduction %></td>  
-                            <td><% if current_user.following?(friends) %>
+                            <td class="text-center"><%= friends.nickname %></td>
+                            <td class="text-center"><%= friends.height %></td>
+                            <td class="text-center"><%= friends.weight %></td>                
+                            <td class="text-center"><%= friends.introduction %></td>  
+                            <!--ログインユーザーでない場合にフォローボタン表示-->
+                            <% if friends != current_user %>
+                                <td class="text-center"><% if current_user.following?(friends) %>
                                 <%= link_to "Unfollow", user_favorites_path(friends), method: :delete %>
-                                <% else %>
+                            <% else %>
                                 <%= link_to "Follow", user_favorites_path(friends), method: :post %>
-                                <% end %>
-                            </td>
-                        <% end %>
+                            <% end %>
+                                </td>
+                            <% end %>
+                            <% end %>
                         </td>
                     </tr>
                 </tbody>

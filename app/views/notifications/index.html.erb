@@ -1,1 +1,22 @@
-通知一覧
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
+            <h2 class="text-left"><i>Notifications</i></h2>
+            <% if @notifications.exists? %>
+                <div class="mt-3">
+                    <%= render "notifications/notification", notifications: @notifications %>
+                </div>
+            <% else %>
+                <p class="mt-3">現在、通知はありません。</p>
+            <% end %>
+            <% if @notifications.exists? %>
+                <div class="text-right">
+                    <%= link_to notification_path(@notifications), method: :delete do %>
+                        <i class="fas fa-trash mt-4" style="color: black;"></i>
+                        <h7 style="color: black;">全削除</h7>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -10,9 +10,9 @@ class UsersController < ApplicationController
     
     def edit
         @user = User.find(params[:id])
+        #カレントユーザーでなければ編集画面には飛べない
         unless @user == current_user
             redirect_to root_path
-        #カレントユーザーでなければ編集画面には飛べない
         end
     end
 
