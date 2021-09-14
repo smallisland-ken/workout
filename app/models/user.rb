@@ -50,7 +50,21 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-         
+  
+  # 検索機能のメソッド
+  def self.lookup(search,word)
+    # binding.pry
+    if search == "perfect_match"
+      @users =   User.where("nickname LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @users =   User.where("nickname LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      @users =   User.where("nickname LIKE?", "%#{word}")
+    elsif search == "partial_match"
+      @users =   User.where("nickname LIKE?", "%#{word}%")
+    end
+  end
+        
   enum gender:[ :男性, :女性, :その他]
   
 end
