@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
         @comment_item = @comment.post
         if @comment.save
            @comment_item.create_notification_comment!(current_user, @comment.id)
-        redirect_to post_path(post)
+        redirect_to post_path(@post)
         end
     end
 

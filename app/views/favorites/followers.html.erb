@@ -2,23 +2,23 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md7 col-lg-9 mt-3 mx-auto">
-      <h2><i><Followers></Followers></i></h2>
+      <h2><i>Followers</i></h2>
       <table class="table mt-4"">
         <thead>
           <tr>
-            <th>プロフィール画像</th>
-            <th>名前</th>
-            <th>フォロー数</th>
-            <th>フォロワー数</th>
+            <th class="text-center">プロフィール画像</th>
+            <th class="text-center">名前</th>
+            <th class="text-center">フォロー数</th>
+            <th class="text-center">フォロワー数</th>
           </tr>
         </thead>
       <tbody>
       <% @users.each do |user| %>
       <tr>
-      <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %></td>
-      <td><%= user.nickname %></td>
-      <td>フォロー数: <%= user.followings.count %></td>
-      <td>フォロワー数: <%= user.followers.count %></td>
+      <td class="text-center"><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %></td>
+      <td class="text-center"><%= user.nickname %></td>
+      <td class="text-center">フォロー数: <%= user.followings.count %></td>
+      <td class="text-center">フォロワー数: <%= user.followers.count %></td>
       <% end %>
       </td>
       </tr>

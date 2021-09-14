@@ -19,7 +19,7 @@
                             <%= diary.date_on %>
                             <% end %>
                             </td>
-                        <td class="text-center"><%= diary.time_at %></td>
+                        <td class="text-center"><%= diary.time_at.strftime('%H:%M') %></td>
                         <td class="text-center"><%= diary.place %></td>
                         <td class="text-center"><%= diary.tags.pluck(:name).join(',') %></td>
                          <% end %>
