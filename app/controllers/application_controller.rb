@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
       # before_action :authenticate_user!,except: [:show, :top]
       # バリデーション権限(後ほど検討)
+      protect_from_forgery with: :null_session
 
       # フラッシュメッセージがdefaultではalertとnoticeしかないので追加
       # 参考記事 https://note.com/asm_18/n/n22e76d73760b

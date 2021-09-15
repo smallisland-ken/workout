@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
-    
+    impressionist :actions=> [:show]
+
     # 新規投稿用
     def new
         @post = Post.new
@@ -15,11 +16,15 @@ class PostsController < ApplicationController
 
         # タグ用のコード
         @tags = @post.tags.pluck(:name).join(',')
+        
+        # 閲覧数表示
+        impressionist(@post, nil, :unique => ["session_hash"])
     end
     
     # タイムライン
     def index
-        @posts = Post.all
+        # 新着順に表示
+        @posts = Post.order('id DESC')
         # プロフィール用のfind
         @profile = User.find(current_user.id)
     end
