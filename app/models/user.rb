@@ -1,13 +1,13 @@
 class User < ApplicationRecord
 
-  is_impressionable
-  attachment :profile_image
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-      
+
+  # refile用記述
+  attachment :profile_image
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -51,9 +51,11 @@ class User < ApplicationRecord
     end
   end
   
+  # 検索機能のアソシエーション
+  has_many :searches, dependent: :destroy
+  
   # 検索機能のメソッド
   def self.lookup(search,word)
-    # binding.pry
     if search == "perfect_match"
       @users =   User.where("nickname LIKE?", "#{word}")
     elsif search == "forward_match"

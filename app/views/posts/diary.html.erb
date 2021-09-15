@@ -15,16 +15,15 @@
                 <% @diary.each do |diary| %>
                     <tr>
                         <td class="text-center">
-                        <%= link_to post_path(diary) do %>
-                            <%= diary.date_on %>
+                            <%= link_to post_path(diary) do %>
+                                <%= diary.date_on %>
                             <% end %>
-                            </td>
+                        </td>
                         <td class="text-center"><%= diary.time_at.strftime('%H:%M') %></td>
                         <td class="text-center"><%= diary.place %></td>
                         <td class="text-center"><%= diary.tags.pluck(:name).join(',') %></td>
-                         <% end %>
-                        </td>
                     </tr>
+                 <% end %>
                 </tbody>
             </table>
         </div>

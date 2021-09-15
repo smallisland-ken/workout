@@ -14,7 +14,8 @@
                             <div>
                                 <i class="far fa-smile"></i> <%= @post.user.nickname %> 
                                 <br><i class="far fa-comment"></i> Comments：<%= @post.comments.count %> <i class="far fa-thumbs-up"></i> Likes：
-                                <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like_show', locals: {post: @post}%></span>
+                                <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like_show', locals: {post: @post}%></span> 
+                                <%=  @post.impressionist_count %>
                         </div>
                             <div class="fas fa-tags mt-2">
                                 <%= @tags %>

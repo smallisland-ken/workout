@@ -1,76 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        
+        <!--画像スライダー用記述-->
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    
+    <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand text-white" href="/"><i>Workout with People</i></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand" href="/"><i>Workout with Friends</i></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav ml-auto">
-                            <% if user_signed_in? %>
-                            <li>
-                                <%= link_to users_friends_path, class: 'fas fa-running nav-link text-light' do %>
-                                筋トレ仲間
-                                <% end %>
-                            </li>
-                            <li>
-                                <%= link_to diary_posts_path, method: :get, class: 'fas fa-book nav-link text-light' do %>
-                                筋トレ日記
-                                <% end %>
-                            </li>
-                            <li>
-                                <!--通知があった際に色が出るように表示-->
-                                <% if unread_notifications.any? %>
-                                  <i class="fa fa-circle" style="color: gold;"></i>
-                                   <% end %>
-                                <%= link_to notifications_path, method: :get, class: 'fas fa-bell nav-link text-light' do %>
-                                通知機能
-                                <% end %>
-                            </li>
-                            <li>
-                            <%= link_to edit_user_path(current_user.id), method: :get, class: 'fas fa-user-friends nav-link text-light' do %>
-                                マイページ
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <% if user_signed_in? %>
+                        <li class="nav-item active">
+                            <%= link_to users_friends_path, class: 'fas fa-running nav-link text-light mt-1' do %>
+                            筋トレ仲間
                             <% end %>
-                            </li>
-                            <li>
-                                <%= link_to destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' do %>
-                                logout
-                                <% end %>
-                            </li>
-                            <% else %>
-                            <li>
-                                <%= link_to new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' do %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to diary_posts_path, method: :get, class: 'fas fa-book nav-link text-light mt-1' do %>
+                            筋トレ日記
+                            <% end %>
+                        </li>
+                        <li class="nav-item">
+                            <!--通知があった際に色が出るように表示-->
+                            <% if unread_notifications.any? %>
+                            <i class="fa fa-circle" style="color: gold;"></i>
+                            <% end %>
+                            <%= link_to notifications_path, method: :get, class: 'fas fa-bell nav-link text-light mt-1' do %>
+                            通知機能
+                            <% end %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to edit_user_path(current_user.id), method: :get, class: 'fas fa-user-friends nav-link text-light mt-1' do %>
+                            マイページ
+                            <% end %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light mt-1' do %>
+                            logout
+                            <% end %>
+                        </li>
+                    </ul>
+                        <%= form_with url:search_path, method: :get, local: true do |f| %>
+                            <%= f.text_field :word, placeholder: "Find your friends!", class:"form-control", autofocus: true %>
+                            <%= f.select :search, options_for_select([["部分一致","partial_match"],["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"]]), class:"mr-2" %>
+                            <%= f.submit "Search", class:"btn btn-outline-success ml-2 mt-2" %>
+                        <% end %>
+                    <% else %>
+                    <ul class="navbar-nav mr-auto mt-4 mb-4">
+                        <li class="nav-item active">
+                            <%= link_to new_user_registration_path, class: 'fas fa-user-plus nav-link text-light mt-1' do %>
                                 新規登録
-                                <% end %>
+                            <% end %>          
                             </li>
-                            <li>
-                                <%= link_to new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' do %>
-                                ログイン
-                                <% end %>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </div>
+                            <li class="nav-item">
+                                <%= link_to new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light mt-1' do %>
+                            ログイン
+                            <% end %>          
+                        </li>
+                    </ul>
                 </div>
-            </nav>
+                <% end %>
+            </nav>        
         </header>
-        <!--flash_typeがどんなフラッシュメッセージのタイプなのか・flashが実際のメッセージ-->
-        <% flash.each do |flash_type, flash| %>
-         <div class="alert alert-<%= flash_type %>"><%= flash %></div>
-        <% end %>
-        </div>
+            <!--flash_typeがどんなフラッシュメッセージのタイプなのか・flashが実際のメッセージ-->
+            <% flash.each do |flash_type, flash| %>
+                <div class="alert alert-<%= flash_type %>"><%= flash %></div>
+            <% end %>
         <%= yield %>
+        <div class="mb-3"></div>
     </body>
 </html>

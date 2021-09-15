@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
 
     attachment :image
+     
+    # 閲覧数用記述
+    is_impressionable
 
     #userのアソシエーション 
     belongs_to :user
