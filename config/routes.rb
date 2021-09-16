@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     get 'followings' => 'favorites#followings', as: 'followings'
     get 'followers' => 'favorites#followers', as: 'followers'
+    get 'example', to: 'users#example'
   end
 
   get "search" => "searches#search"

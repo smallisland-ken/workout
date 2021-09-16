@@ -16,3 +16,14 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+@import "slick";
+@import "slick-theme"; 
+
+.slick-next {
+    right: 10px;
+ }
+
+.slick-prev {
+    left: 10px;
+ }

@@ -1,8 +1,10 @@
 class Post < ApplicationRecord
 
-    attachment :image
+    # 複数写真投稿用のアソシエーション
+    has_many :post_images, dependent: :destroy
+    accepts_attachments_for :post_images, attachment: :image
      
-    # 閲覧数用記述
+    # 閲覧数用記述 
     is_impressionable
 
     #userのアソシエーション 

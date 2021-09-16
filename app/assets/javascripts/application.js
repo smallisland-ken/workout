@@ -18,3 +18,16 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function(){
+  console.log("test",$('.slider'))
+  $('.slider').not('.slick-initialized').slick({
+      dots: true, 
+      autoplaySpeed: 6000, 
+  });
+})
+
+// ターボリンクがキャッシュする前に初期化をすることでslickが正常に動くようする記述
+document.addEventListener("turbolinks:before-cache", function(){
+    $('.slider.slick-initialized').slick('unslick');
+})

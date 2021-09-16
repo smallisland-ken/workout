@@ -3,7 +3,9 @@
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-3">
             <h2><i>Post Detail</i></h2>
             <div class="card w-100 mx-auto mt-4 shadow-lg">
-                <%= attachment_image_tag @post, :image, class:"card-img-top"; %>
+                        <% @post.post_images.each do |image| %>
+                            <%= attachment_image_tag image, :image, class:"card-img-top"; %>
+                        <% end %>                
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2">
