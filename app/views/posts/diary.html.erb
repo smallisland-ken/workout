@@ -7,8 +7,10 @@
                     <tr>
                         <th class="text-center">日付</th>
                         <th class="text-center">時刻</th>
+                        <th class="text-center">タイトル</th>
                         <th class="text-center">筋トレ場所</th>
                         <th class="text-center">タグ付け</th>
+                        <th class="text-center">筋トレ達成度</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,8 +22,24 @@
                             <% end %>
                         </td>
                         <td class="text-center"><%= diary.time_at.strftime('%H:%M') %></td>
+                        <td class="text-center"><%= diary.title %></td>
                         <td class="text-center"><%= diary.place %></td>
                         <td class="text-center"><%= diary.tags.pluck(:name).join(',') %></td>
+                        <td class="text-center" id="star<%= diary.id %>">
+                            <!--@diaryはallで引っ張ってきているので、eachの中に入れないと機能しない-->
+                            <script>
+                                $('#star<%= diary.id %>').raty({
+                                    size: 36,
+                                    starOff:  '<%= asset_path('star-off.png') %>',
+                                    starOn : '<%= asset_path('star-on.png') %>',
+                                    starHalf: '<%= asset_path('star-half.png') %>',
+                                    half: true,
+                                    // 読み込みだけで入力できない
+                                    readOnly: true,
+                                    score: <%= diary.rate %>,
+                                });
+                            </script>
+                        </td>
                     </tr>
                  <% end %>
                 </tbody>
@@ -29,3 +47,4 @@
         </div>
     </div>
 </div>
+

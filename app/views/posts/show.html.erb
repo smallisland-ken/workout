@@ -3,9 +3,11 @@
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-3">
             <h2><i>Post Detail</i></h2>
             <div class="card w-100 mx-auto mt-4 shadow-lg">
-                        <% @post.post_images.each do |image| %>
-                            <%= attachment_image_tag image, :image, class:"card-img-top"; %>
-                        <% end %>                
+               <div class="slider">
+                    <% @post.post_images.each do |image| %>
+                        <%= attachment_image_tag image, :image, class:"card-img-top"; %>
+                    <% end %>
+                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2">
@@ -18,7 +20,7 @@
                                 <br><i class="far fa-comment"></i> Comments：<%= @post.comments.count %> <i class="far fa-thumbs-up"></i> Likes：
                                 <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like_show', locals: {post: @post}%></span> 
                                 <%=  @post.impressionist_count %>
-                        </div>
+                            </div>
                             <div class="fas fa-tags mt-2">
                                 <%= @tags %>
                             </div>
@@ -58,3 +60,15 @@
         </div>
     </div>
 </div>
+
+<!--レビュー用javascript-->
+<script>
+ $('#star').raty({
+   size: 36,
+   starOff: "<%= asset_path('star-off.png') %>",
+   starOn: "<%= asset_path('star-on.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   scoreName: 'post[rate]',
+   half: true,
+ });
+</script>
