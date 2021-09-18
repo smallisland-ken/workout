@@ -6,7 +6,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.time :time_at, null: false
       t.string :place, null: false
       t.text :content, null: false
-
+      t.string :title, null: false
+      t.float :rate, null: false
       t.timestamps
     end
   end

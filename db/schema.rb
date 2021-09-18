@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 2021_09_16_065400) do
     t.time "time_at", null: false
     t.string "place", null: false
     t.text "content", null: false
+    t.string "title", null: false
+    t.float "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

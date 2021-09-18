@@ -19,6 +19,8 @@
 //= require turbolinks
 //= require_tree .
 
+//= require jquery.raty.js
+
 document.addEventListener("turbolinks:load", function(){
   console.log("test",$('.slider'))
   $('.slider').not('.slick-initialized').slick({
@@ -31,3 +33,4 @@ document.addEventListener("turbolinks:load", function(){
 document.addEventListener("turbolinks:before-cache", function(){
     $('.slider.slick-initialized').slick('unslick');
 })
+

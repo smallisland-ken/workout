@@ -27,6 +27,8 @@ class PostsController < ApplicationController
         @posts = Post.order('id DESC')
         # プロフィール用のfind
         @profile = User.find(current_user.id)
+        # いいねランキング
+        @like_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
     end
 
     #友達の投稿一覧
@@ -79,7 +81,7 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:user, :date_on, :time_at, :place, :content, post_images_images: [])
+        params.require(:post).permit(:user, :date_on, :time_at, :place, :title, :content, :rate, post_images_images: [])
     end        
 
 end
