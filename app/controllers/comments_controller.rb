@@ -8,13 +8,14 @@ class CommentsController < ApplicationController
         @comment_item = @comment.post
         if @comment.save
            @comment_item.create_notification_comment!(current_user, @comment.id)
-        redirect_to post_path(@post)
         end
+         @post_comments = @post.comments
     end
 
     def destroy
-        Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-        redirect_to post_path(params[:post_id]), success: '削除に成功しました！'        
+        @post = Post.find(params[:post_id])
+        @post_comments = @post.comments
+        Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy        
     end
 
     private

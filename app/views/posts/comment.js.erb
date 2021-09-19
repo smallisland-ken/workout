@@ -1,0 +1,5 @@
+console.log('#comment_<%= @post_comment.ids %>');
+console.log('test');
+$('#comment_<%= @post_comment.ids %>').html("<%= j(render 'posts/post_comment', post_comments:@post_comments) %>");
+<!--renderに対応する()が必要-->
+$("textarea").val('')
