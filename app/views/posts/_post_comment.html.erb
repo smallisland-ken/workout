@@ -1,0 +1,15 @@
+<% post_comments.each do |comment| %>
+    <div class="col-3 text-center">
+        <%= attachment_image_tag comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", class:"rounded-circle"; %>
+        <div class="small mb-4"><%= comment.user.nickname %>
+        </div>
+    </div>
+        <div class="col-8 mt-2">
+            <%= comment.content %>
+            <div class="text-right mt-3 mb-3">
+                <% if comment.user == current_user %>
+                    <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => "本当に消しますか？", class: "btn-sm btn-danger" %></td>
+                <% end %>
+            </div>
+        </div>
+<% end %>

@@ -1,74 +1,62 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-3">
+        <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
             <h2><i>Post Detail</i></h2>
             <div class="card w-100 mx-auto mt-4 shadow-lg">
-               <div class="slider">
-                    <% @post.post_images.each do |image| %>
-                        <%= attachment_image_tag image, :image, class:"card-img-top"; %>
-                    <% end %>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-2">
-                            <%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+                <div class="slider">
+                <% @post.post_images.each do |image| %>
+                <%= attachment_image_tag image, :image, class:"card-img-top"; %>
+                <% end %>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3 text-center">
+                        <%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+                        <p class="mt-2">
+                        <%= @post.user.nickname %>
+                        </p>
+                    </div>
+                    <div class="col-9">
+                        <p class="card-title"></P>
+                        <div>
+                            <i class="far fa-comment"></i> Comments：<%= @post.comments.count %> <i class="far fa-thumbs-up"></i> Likes：
+                            <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like_show', locals: {post: @post}%></span> 
+                            <br><div class="far fa-eye">：<%=  @post.impressionist_count %> views</div>
                         </div>
-                        <div class="col-10">
-                            <p class="card-title">
-                            <div>
-                                <i class="far fa-smile"></i> <%= @post.user.nickname %> 
-                                <br><i class="far fa-comment"></i> Comments：<%= @post.comments.count %> <i class="far fa-thumbs-up"></i> Likes：
-                                <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like_show', locals: {post: @post}%></span> 
-                                <%=  @post.impressionist_count %>
-                            </div>
+                        <div class="mt-2">
+                            投稿日：<%= @post.date_on %>
+                            <p>タイトル：<%= @post.title %></p>
+                            <p class="mt-1">内容：<%= @post.content %></p>
                             <div class="fas fa-tags mt-2">
                                 <%= @tags %>
                             </div>
-                            <div class="mt-2">
-                                <%= @post.content %>
-                            </div>
-                            <% if @post.user == current_user %>
+                        </div>
+                        <% if @post.user == current_user %>
                             <div class="text-right mt-3">
                                 <%= link_to "Edit", edit_post_path(@post), method: :get, class: "btn btn-primary" %></td>
                                 <%= link_to "Delete", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %></td>
                             </div>
-                            <% end %>
+                        <% end %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mx-auto">
+                    <%= form_with model:[@post, @comment], local: false do |f| %>
+                        <%= f.text_area :content, rows:'5',placeholder: "Any comments on this post?", class:"form-control mt-3"  %>
+                        <div class="text-right">
+                            <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
                         </div>
-                    </div>
-                        <div class="row">
-                            <div class="col-12 mx-auto">
-                                <%= form_with(model:[@post, @comment], local: true) do |f| %>
-                                    <%= f.text_area :content, rows:'5',placeholder: "Any comments on this post?", class:"form-control mt-3"  %>
-                                    <div class="text-right">
-                                        <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
-                                    </div>
-                                <% end %>
-                                <% @post_comments.each do |comment| %>
-                                    <div class="text-center">
-                                    <%= comment.user.nickname %>
-                                    <%= comment.content %>
-                                      <% if comment.user == current_user %>
-                                        <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn-sm btn-danger" %></td>
-                                     <% end %>
-                                <% end %>
-                                </div>
-                            </div>
-                        </div>
+                    <% end %>
+                </div>
+                <div class="card-body">
+                    <div id="post_comments" class="row allign-items-center">
+                        <%= render partial: 'posts/post_comment', locals: {post_comments:@post_comments} %>
                     </div>
                 </div>
-            </div>     
+             </div>     
         </div>
     </div>
+    <!--下にスペース空ける様のコード-->
+    <div class="mb-3">
+    </div>
 </div>
-
-<!--レビュー用javascript-->
-<script>
- $('#star').raty({
-   size: 36,
-   starOff: "<%= asset_path('star-off.png') %>",
-   starOn: "<%= asset_path('star-on.png') %>",
-   starHalf: "<%= asset_path('star-half.png') %>",
-   scoreName: 'post[rate]',
-   half: true,
- });
-</script>
