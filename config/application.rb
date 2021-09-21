@@ -12,6 +12,8 @@ module Workout
     config.load_defaults 5.2
     # 時刻を日本にするために追加
     config.time_zone = 'Tokyo'
+    # deviseを日本語化
+    config.i18n.default_locale = :ja 
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

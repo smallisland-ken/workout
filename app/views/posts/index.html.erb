@@ -2,17 +2,24 @@
     <div class="row">
         <div class="col-md-3">
             <div class="mt-3 sticky-top">
-            <h2><i>My Profile</i></h2>
-                <%= render "posts/profile", profile: @profile %>
-            <h2 class="mt-3"><i>Like Rankings</i></h2>
-            <div class="card shadow-lg mt-4">
-                <% @like_ranks.each.with_index(1) do |post, i| %>
-                <div class="fas fa-crown mt-2 ml-2">Rank<%= i %></div>
-                <P class="ml-2"><%= post.date_on %></P>
-                <P class="ml-2"><%= post.user.nickname %></P>
-                <P class="ml-2"><%= post.title %></P>
-                <% end %>
-            </div>
+                <h2><i>My Profile</i></h2>
+                    <%= render "posts/profile", profile: @profile %>
+                <h2 class="mt-3"><i>Like Rankings</i></h2>
+                <div class="card shadow-lg mt-4">
+                    <% @like_ranks.each.with_index(1) do |post, n| %>
+                    <div class="fas fa-crown mt-4 ml-4"> Rank<%= n %></div>
+                    <P class="mt-3 ml-4">
+                        <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", size: '40x40', class:"rounded-circle"; %>
+                        <%= post.user.nickname %>
+                    </P>
+                    <P class="ml-4">Date：<%= post.date_on %></P>
+                    <P class="ml-4">Title：
+                        <%= link_to post_path(post) do %>
+                            <%= post.title %>
+                        <% end %>
+                    </P>
+                    <% end %>
+                </div>
             </div>
         </div>
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
@@ -21,26 +28,28 @@
                 <div class="card w-70 mx-auto mt-4 shadow-lg">
                        <div class="slider">
                            <% post.post_images.each do |image| %>
-                                <%= attachment_image_tag image, :image, class:"card-img-top"; %>
+                               <%= link_to post_path(post) do %>
+                                    <%= attachment_image_tag image, :image, class:"card-img-top"; %>
+                               <% end %>
                            <% end %>
                         </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3 text-center">
-                                <%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+                                <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", size: '70x70', class:"mt-3 rounded-circle"; %>
                                 <p class="mt-2">
-                                    <%= post.user.nickname %>
+                                    <div class="allign-center"><%= post.user.nickname %></div>
                                 </p>
                             </div>
                             <div class="col-7">
                                 <p class="card-title"></p>
                                 <div>
-                                <%= link_to post_path(post) do %>
-                                    投稿日：<%= post.date_on %>
-                                <% end %>
-                                <br><div class="far fa-comment"></div> Comments：<%= post.comments.count %> <div class="far fa-thumbs-up"></div> Likes： 
-                                <span id="likes_<%= post.id %>"><%= render partial: 'likes/like', locals: {post: post}%></span>
-                                <div class="far fa-eye">：<%=  post.impressionist_count %> views</div>
+                                    <%= link_to post_path(post) do %>
+                                        投稿日：<%= post.date_on %>
+                                    <% end %>
+                                    <br><div class="far fa-comment"></div> Comments：<%= post.comments.count %> <div class="far fa-thumbs-up"></div> Likes： 
+                                    <span id="likes_<%= post.id %>"><%= render partial: 'likes/like', locals: {post: post}%></span>
+                                    <div class="far fa-eye">：<%=  post.impressionist_count %> views</div>
                                 </div>
                                 <div class="fas fa-tags mt-2">
                                     <%= post.tags.pluck(:name).join(',') %>
@@ -54,14 +63,15 @@
                 </div>
             <% end %>
         </div>
-        <div class="col-sm-1 col-md-1 col-lg-1 px-1 px-sm-1">
-            <div class="text-right fixed-bottom mb-2">
+        <div class="col-sm-1 col-md-1 col-lg-1 px-1 px-sm-1 text-right fixed-bottom mb-2">
+            <div class=" ue text-right fixed-bottom mb-2">
                 <%= link_to new_post_path do %>
-                    <button type="button" class="btn btn-primary rounded-circle mb-5 mr-5 sticky-bottom" style="width:4.5rem;height:4.5rem;">新規<br>投稿</button>
+                    <button type="button" class="ue2 btn btn-primary rounded-circle mb-5 mr-5 sticky-bottom" style="width:4.5rem;height:4.5rem;">新規<br>投稿</button>
                 <% end %> 
-            </div>
+            </div>  
         </div>
     </div>
+    <!--下にマージンを空けるための記述-->
     <div class="mb-3">
     </div>
 </div>
