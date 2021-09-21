@@ -27,3 +27,30 @@
 .slick-prev {
     left: 10px;
  }
+
+.fill { 
+    min-height: 100%;
+    height: 100%;
+}
+
+.notice {
+  color: white;
+  background-color: blue;
+}
+.alert {
+  color: white;
+  background-color: #99CCFF;
+  margin-bottom: 0rem;
+}
+
+.login {
+   height: 4rem;
+}
+
+.ue{
+pointer-events: none;
+}
+
+.ue2{
+pointer-events: auto;
+}

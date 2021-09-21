@@ -79,7 +79,7 @@
             <% flash.each do |flash_type, flash| %>
                 <div class="alert alert-<%= flash_type %>"><%= flash %></div>
             <% end %>
-        <%= yield %>
-        <div class="mb-3"></div>
+
+          <%= yield %>
     </body>
 </html>
