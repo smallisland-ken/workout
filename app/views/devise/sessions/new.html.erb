@@ -1,41 +1,38 @@
-<div style="background-image: url('https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F35%2F2010%2F07%2F28170650%2Ffb-interval-training-workouts.jpg');height: 100vh;">
-    <div class="container fill">
-      <div class="row">
-        <div class=" col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-5">
-          <div class="login"></div>
-          <h1 class="text-center mt-3"><i>Workout With Friends</i></h1>
-        </div>
-      </div>
-
-    <div class="text-center mt-4">友達を探してつながろう！</div>
-    <div class="text-center">SNSでつながる新しい形の筋トレ</div>
-    
-
-
-    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-    <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
+<div class="vide_wrap" style="position:relative;">
+  <%= video_tag("/assets/videos/workoutwoman.mp4", autoplay: true, loop: true, muted: true, width: "100%", height: "120%", style: "min-height: 100vh;
+    height: 100vh; object-fit: cover; vertical-align:top; filter:blur(3px) contrast(65%);") %>
+  <div style="position: absolute;
+    top: calc(50% - 300px);
+    left: calc(50% - 300px);" id="fadeIn">
+    <h1 class="text-center mt-3 h1"><i>Workout With Friends</i></h1>
+    <div style="max-width:300px;width:300px;margin: 0 auto;">
+      <h2 style="font-size: 1.2em;text-align:center; color:white; " class="mt-1">
+        友達を探してつながろう！<br>
+        SNSでつながる新しい形の筋トレ
+        
+      </h2>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
       <div class="field">
         <%= f.label :Email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control .col-md-2" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
       </div>
-      </div>
-    
       <div class="field mt-2">
-        <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
         <%= f.label :Password %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class:"form-control .col-md-2" %>
+        <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
       </div>
-      </div>
-
-      
       <div class="field text-center mt-2">  
         <%= render "devise/shared/links" %>
       </div>
-      
       <div class="actions text-center mt-3">
         <%= f.submit "Log in ",class:"btn btn-primary w-25" %>
       </div>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-</div>
-</div>
+<script>
+$(document).ready(function(){
+$('#fadeIn').hide().fadeIn(2000);
+});
+</script>

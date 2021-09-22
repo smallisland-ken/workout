@@ -23,8 +23,8 @@ class PostsController < ApplicationController
     
     # タイムライン
     def index
-        # 新着順に表示
-        @posts = Post.order('id DESC')
+        # 新着順に5件まで表示
+        @posts = Post.page(params[:page]).per(5).reverse_order
         # プロフィール用のfind
         @profile = User.find(current_user.id)
         # いいねランキング
