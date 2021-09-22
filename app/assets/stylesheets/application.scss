@@ -48,9 +48,35 @@
 }
 
 .ue{
-pointer-events: none;
+    pointer-events: none;
 }
 
 .ue2{
-pointer-events: auto;
+    pointer-events: auto;
+}
+
+.pagination {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.video {
+ width: 100vw;
+ height: 100vh;
+ position: absolute;
+ display: flex;
+ justify-content: center;
+ object-fit: cover;
+ top: 0;
+ z-index: -2;
+}
+
+.video_wrap {
+  position: relative;
+}
+h1.h1 {
+  font-family: serif;          
+  color: #fff;
+  font-size: 400%;
 }
