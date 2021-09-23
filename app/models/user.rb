@@ -5,6 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # user用バリデーション
+  validates :nickname, presence: true
+  validates :height, presence: true
+  validates :weight, presence: true
+  validates :introduction, presence: true
+
   # refile用記述
   attachment :profile_image
 

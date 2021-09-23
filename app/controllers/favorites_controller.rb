@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+    before_action :authenticate_user!
 
     # フォローアンフォロー処理 
     def create

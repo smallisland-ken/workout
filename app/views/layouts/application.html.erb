@@ -54,7 +54,7 @@
                         </li>
                         <li class="nav-item">
                             <%= link_to destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light mt-1' do %>
-                            logout
+                            ログアウト
                             <% end %>
                         </li>
                     </ul>
@@ -82,7 +82,15 @@
         </header>
             <!--flash_typeがどんなフラッシュメッセージのタイプなのか・flashが実際のメッセージ-->
             <% flash.each do |flash_type, flash| %>
-                <div class="alert alert-<%= flash_type %>"><%= flash %></div>
+            <% if flash_type == "alert" %>
+                <div class="alert">
+                    <%= flash %>
+                </div>
+            <% else %>
+                <div class="notice">
+                    <%= flash %>
+                </div>
+            <% end %>
             <% end %>
           <%= yield %>
     </body>
