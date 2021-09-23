@@ -6,10 +6,10 @@
             <!--ここからエラーメッセージ-->
             <% if @post.errors.any? %>
             <div id="error_explanation">
-                <div class="error"><%= pluralize(@user.errors.count, "error") %> 
-                    prohibited this product from being saved:
+                <div class="error"><%= pluralize(@post.errors.count, "つエラー") %> 
+                    があるため保存ができませんでした。
                 </div>
-                <ul>
+                <ul class="error_list mt-2">
                     <% @post.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                     <% end %>

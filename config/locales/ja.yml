@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        nickname: ニックネーム
+        height: 身長
+        weight: 体重
+        introduction: 自己紹介
+      post:
+        content: 筋トレ内容
+        place: 筋トレ場所
+        title: タイトル
+        rate: 筋トレ達成度

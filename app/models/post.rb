@@ -3,10 +3,16 @@ class Post < ApplicationRecord
     # 複数写真投稿用のアソシエーション
     has_many :post_images, dependent: :destroy
     accepts_attachments_for :post_images, attachment: :image
-     
+    
+    # Post用バリデーション
+    validates :place, presence: true
+    validates :content, presence: true
+    validates :title, presence: true
+    validates :rate, presence: true
+
     # 閲覧数用記述 
     is_impressionable
-
+    
     #userのアソシエーション 
     belongs_to :user
     
