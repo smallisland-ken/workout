@@ -24,8 +24,9 @@
 document.addEventListener("turbolinks:load", function(){
   console.log("test",$('.slider'))
   $('.slider').not('.slick-initialized').slick({
-      dots: true, 
-      autoplaySpeed: 6000, 
+      dots: true,
+      arrows: false,
+      autoplaySpeed: 3000, 
   });
 })
 

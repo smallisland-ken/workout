@@ -34,9 +34,7 @@ class Post < ApplicationRecord
     # タグ付けの新規投稿用メソッド
     def save_tags(tags)
         tags.each do |new_tags|
-        # tag = Tag.find_or_create_by(name: new_tags)
         self.tags.find_or_create_by(name: new_tags)
-        # self.tags << tags
         end
     end
     
@@ -50,6 +48,7 @@ class Post < ApplicationRecord
         tag = self.tags.find_by(name: old_tag)
         self.tags.delete(tag) if tag.present?
         end
+        
         new_tags.each do |new_tag|
         self.tags.find_or_create_by(name: new_tag)
         # self.tags << new_tags
