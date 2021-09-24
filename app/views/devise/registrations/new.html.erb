@@ -11,7 +11,7 @@
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <%= f.label :ニックネーム %>
-          <%= f.text_field :nickname, autofocus: true, class:"form-control mt-1" %>
+          <%= f.text_field :nickname, autofocus: true, class:"form-control mt-1", :required => true %>
         </div>
       </div>
       
@@ -24,7 +24,7 @@
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mt-1" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mt-1", :required => true %>
         </div>
       </div>
     
@@ -34,28 +34,28 @@
           <% if @minimum_password_length %>
           (最低<%= @minimum_password_length %>文字入力)
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1" %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1", :required => true, :minlength => "6" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <%= f.label :パスワード再入力 %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1", :required => true, :minlength => "6" %>
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <%= f.label :身長 %><br />
-          <%= f.text_field :height, autofocus: true, class:"form-control mt-1" %>
+          <%= f.text_field :height, autofocus: true, class:"form-control mt-1", :required => true, :type => "number" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <%= f.label :体重 %><br />
-          <%= f.text_field :weight, autofocus: true, class:"form-control mt-1" %>
+          <%= f.text_field :weight, autofocus: true, class:"form-control mt-1", :required => true, :type => "number" %>
         </div>
       </div>
       
@@ -70,7 +70,7 @@
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <%= f.label :自己紹介 %><br />
-          <%= f.text_area :introduction, autofocus: true, class:"form-control" %>
+          <%= f.text_area :introduction, autofocus: true, class:"form-control", :required => true %>
         </div>
       </div>
     

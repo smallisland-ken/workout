@@ -36,27 +36,27 @@
               
                 <div class="form-group">
                 <label>筋トレ場所</label>
-                    <%= f.text_field :place , class: "form-control-file " %>
+                    <%= f.text_field :place , autofocus: true, class: "form-control", :required => true %>
                 </div>
                 
                 <div class="form-group">
                     <label>タグ付け</label>
-                    <%= f.text_area :tag_id, class: "form-control-file", placeholder: "タグが複数の場合は','で区切ってください" %>
+                    <%= f.text_area :tag_id, autofocus: true, class: "form-control", placeholder: "タグが複数の場合は','で区切ってください" %>
                 </div>
 
                 <label>筋トレ達成度</label>
                 <div id="star">
-                    <%= f.hidden_field :rate, :value => 'score' %>
+                    <%= f.hidden_field :rate, :value => 'score', :required => true %>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mt-3">
                 <label>タイトル</label>
-                    <%= f.text_field :title , class: "form-control-file" %>
+                    <%= f.text_field :title , autofocus: true, class: "form-control", :required => true %>
                 </div>
 
                 <div class="form-group">
                 <label>筋トレ内容</label>
-                    <%= f.text_area :content , class: "form-control-file" %>
+                    <%= f.text_area :content , autofocus: true, class: "form-control", :required => true %>
                 </div>
               
                 <div class="form-group">

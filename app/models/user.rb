@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :height, presence: true
   validates :weight, presence: true
+  validates :gender, presence: true
   validates :introduction, presence: true
 
   # refile用記述

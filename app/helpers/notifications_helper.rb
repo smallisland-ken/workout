@@ -8,12 +8,12 @@ module NotificationsHelper
       #notification.actionがfollowかlikeかcommentか
       case notification.action
         when "follow" then
-          tag.a(notification.visitor.nickname, href:user_path(@visitor), style:"font-weight: bold;")+"があなたをフォローしました"
+          tag.a(notification.visitor.nickname, href:friend_posts_path(@visitor), style:"font-weight: bold;")+"があなたをフォローしました"
         when "like" then
-          tag.a(notification.visitor.nickname, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にいいねしました"
+          tag.a(notification.visitor.nickname, href:friend_posts_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にいいねしました"
         when "comment" then
             @comment = Comment.find_by(id: @visitor_comment)&.content
-            tag.a(@visitor.nickname, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にコメントしました"
+            tag.a(@visitor.nickname, href:friend_posts_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にコメントしました"
       end
   end
   
