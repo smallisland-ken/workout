@@ -51,7 +51,6 @@ class PostsController < ApplicationController
         @post.save_tags(tags)
         redirect_to root_path, success: '新規投稿に成功しました！'
         else
-            flash.now[:notice] = "必要項目を記入してください。"
             render :new
         end
     end
@@ -68,7 +67,6 @@ class PostsController < ApplicationController
         @post.update_tags(tags)
         redirect_to diary_posts_path, success: '更新に成功しました！'
         else
-            flash.now[:notice] = "必要項目を記入してください。"
             render :edit
         end
     end

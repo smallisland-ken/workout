@@ -18,7 +18,6 @@ class UsersController < ApplicationController
         if @user.update(user_params)
            redirect_to root_path, success: 'アップデートに成功しました！' 
         else
-            flash.now[:alert] ="必要項目を記入してください。"
             render :edit
         end
     end
