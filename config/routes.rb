@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   # postのindexをルートに設定
   root 'posts#index'
- 
-  #自作したアクション名を使用したい場合はresourcesより上に記載しないとresourcesが先に処理されてしまうため注意。
+
+  # 自作したアクション名を使用したい場合はresourcesより上に記載しないとresourcesが先に処理されてしまうため注意。
   # resources;usersの下にget 'users/friends' => 'users#friends'を記載するとshowアクションが読み込まれてしまう。
-  
+
   get 'users/friends' => 'users#friends'
- 
+
   devise_for :users
-  
+
   # users用のURL用に設定
-  resources :users, only:[:edit, :update] do
+  resources :users, only: [:edit, :update] do
     # フォロー機能はuserにネストさせている
     resource :favorites, only: [:create, :destroy]
     get 'followings' => 'favorites#followings', as: 'followings'
@@ -30,8 +30,7 @@ Rails.application.routes.draw do
       get 'friends/:id', to: 'posts#friend', as: 'friend'
     end
   end
-  
+
   # 通知機能のルート
   resources :notifications, only: [:index, :destroy]
- 
 end
