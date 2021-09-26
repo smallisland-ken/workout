@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -18,7 +17,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  
+
   # フォロー機能のアソシエーション
   has_many :favorites, class_name: "Favorite", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :favorites, source: :follow
@@ -29,40 +28,41 @@ class User < ApplicationRecord
   # favorites.createのfavoritesはアソシエーションの名前
   # createメソッドの使い方で検索
   def follow(user_id)
-      favorites.create(follow_id: user_id)
+    favorites.create(follow_id: user_id)
   end
+
   def unfollow(user_id)
-      favorites.find_by(follow_id: user_id).destroy
+    favorites.find_by(follow_id: user_id).destroy
   end
-  
+
   # 引数そのものを検索する
   # フォローを判定しているメソッド
   def following?(user)
-      followings.include?(user)
+    followings.include?(user)
   end
- 
-  #いいね機能のアソシエーション
+
+  # いいね機能のアソシエーション
   has_many :likes, dependent: :destroy
-  
+
   # 通知機能のアソシエーション
   has_many :notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :reverse_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  
+
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?",current_user.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.notifications.new(
         visited_id: id, action: 'follow'
-        )
+      )
       notification.save if notification.valid?
     end
   end
-  
+
   # 検索機能のアソシエーション
   has_many :searches, dependent: :destroy
-  
+
   # 検索機能のメソッド
-  def self.lookup(search,word)
+  def self.lookup(search, word)
     if search == "perfect_match"
       @users =   User.where("nickname LIKE?", "#{word}")
     elsif search == "forward_match"
@@ -73,7 +73,6 @@ class User < ApplicationRecord
       @users =   User.where("nickname LIKE?", "%#{word}%")
     end
   end
-        
-  enum gender:[ :男性, :女性, :その他]
-  
+
+  enum gender: { :男性 => 0, :女性 => 1, :その他 => 2 }
 end
