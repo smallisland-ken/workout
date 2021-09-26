@@ -3,7 +3,7 @@
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
             <h2 class="mt-3"><i>New Post</i></h2>
             
-           <%= form_with model:@post, local:true do |f| %>
+           <%= form_with model:@post, id: 'new_post', local:true do |f| %>
                 <div class="form-group">
                     <label class="mt-2">日付入力</label>
                     <p><%= f.date_select :date_on, autofocus: true, class: "form-control name" %></p>
@@ -32,6 +32,10 @@
                 <label>筋トレ達成度</label>
                 <div class="form-group" id="star">
                     <%= f.hidden_field :rate, :value => 'score' %>
+                </div>
+                <div class="form-group" style="position:absolute;top:-10000px">
+                    <label>筋トレ達成度</label>
+                    <input name="dummy-input">
                 </div>
 
                 <div class="form-group mt-3">
@@ -65,26 +69,84 @@
  });
 </script>
 
+<!--バリデーション-->
+<script>
+$(function(){
+  $('#new_post').validate({
+	rules : {
+		  "post[place]": {
+			required: true
+		 },
+          "post[tag_id]": {
+					required: true
+		 },	
+          "#post_rate": {
+					required: true
+		 },
+		  "post[title]": {
+					required: true
+		 },
+          "post[content]": {
+          		    required: true
+		     },
+          "dummy-input": {
+          		    required: true
+		     },
+		     
+		},
+		  messages: {
+            "post[place]"  :{
+						required: "必須項目です。入力をお願いします。"
+				 },
+			"post[tag_id]"  :{
+						required: "必須項目です。入力をお願いします。"
+				 },
+			"#post_rate"  :{
+						required: "必須項目です。入力をお願いします。"
+				 },	
+			"post[title]"  :{
+              			required: "必須項目です。入力をお願いします。"
+				 },	
+			"post[content]"  :{
+      			required: "必須項目です。入力をお願いします。"
+		 },	
+		     "dummy-input"  :{
+      			required: "必須項目です。入力をお願いします。"
+		 },	
+      },
+   }) 
+})
+</script>
+
+投稿用バリデーション
 <!--バリデーション用javascript-->
 <script>
 // jqueryの準備
 $(document).ready(function(){
+    $("#star").on("click",function(){
+        $('input[name="dummy-input"]').parent().hide();
+    });
     // .button がクリックされたとき
     $(".button").click(function(){
         // Id[post_place]のvalue値をpost_place_textの格納
-        let post_place_text = $("#post_place").val();
         // classの場合[.] IDの場合[#] html固有のタグ 例[h1]の場合[h1]
-        let post_tag_id_text = $("#post_tag_id").val();
-        let post_title_text = $("#post_title").val();
-        let post_content_text = $("#post_content").val();
-        let star_level = $("#star").find("input:last").val();
+          let star_level = $("#star").find("input:last").val();
 
         if (star_level == "") {
             // バリデーションテキストが出力されていなかった場合、処理を実行
             if($("#star_level_valid_message").val() != ""){
                 // inseartAfter(DOM)の後に、左辺のhtml要素を追加
-                $("<p id='star_level_valid_message' style='color:red'>筋トレ達成度が空欄です</p>").insertAfter("#star");
+                $("<p id='star_level_valid_message' style='color:black'>必須項目です。入力をお願いします。</p>").insertAfter("#star");
                 $("#star").css("border-color","red");
+                $("#star").off("click","");
+                $("#star").on("click",function(){
+                    console.log("test");
+                    if($("#star_level_valid_message").val() == ""){
+                        $("#star_level_valid_message").remove();
+                        $("#star").css("border-color","#ced4da");
+                        $('input[name="dummy-input"]').parent().hide();
+                    }
+                });
             }
         } else {
             // バリデーションテキストが出力されていた場合、処理を実行
@@ -94,53 +156,6 @@ $(document).ready(function(){
             }
         }
 
-        if (post_place_text == "") {
-            if($("#post_place_valid_message").val() != ""){
-                $("<p id='post_place_valid_message' style='color:red'>筋トレ場所が空欄です</p>").insertAfter("#post_place");
-                $("#post_place").css("border-color","red");
-            }
-        } else {
-            if($("#post_place_valid_message").val() == ""){
-                $("#post_place_valid_message").remove();
-                $("#post_place").css("border-color","#ced4da");
-            }
-        }
-        if (post_tag_id_text == "") {
-            if($("#post_tag_valid_message").val() != ""){
-                $("<p id='post_tag_valid_message' style='color:red'>タグ付けが空欄です</p>").insertAfter("#post_tag_id");
-                $("#post_tag_id").css("border-color","red");
-            }
-        } else {
-            if($("#post_tag_valid_message").val() == ""){
-                $("#post_tag_valid_message").remove();
-                $("#post_tag_id").css("border-color","#ced4da");
-            }
-        }
-        if (post_title_text == "") {
-          if($("#post_title_valid_message").val() != ""){
-            $("<p id='post_title_valid_message' style='color:red'>タイトルが空欄です</p>").insertAfter("#post_title");
-            $("#post_title").css("border-color","red");
-          }
-        } else {
-            if($("#post_title_valid_message").val() == ""){
-                $("#post_title_valid_message").remove();
-                $("#post_title").css("border-color","#ced4da");
-            }
-        }
-        if (post_content_text == "") {
-          if($("#post_content_valid_message").val() != ""){
-            $("<p id='post_content_valid_message' style='color:red'>筋トレ内容が空欄です</p>").insertAfter("#post_content");
-            $("#post_content").css("border-color","red");
-          }
-        } else {
-            if($("#post_content_valid_message").val() == ""){
-                $("#post_content_valid_message").remove();
-                $("#post_content").css("border-color","#ced4da");
-            }
-        }
-        if(!post_place_text || !post_tag_id_text || !post_title_text || !post_content_text){
-            return false;
-        }
     });
 });
 </script>

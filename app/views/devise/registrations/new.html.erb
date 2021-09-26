@@ -76,7 +76,7 @@
     
       <div class="actions">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-        <%= button_tag "Sign Up", type: "button", class:"btn btn-primary button" %>
+        <%= button_tag "Sign Up", type: "submit", class:"btn btn-primary button" %>
         <% end %>
         </div>
       </div>
@@ -85,109 +85,68 @@
 </div>
 <div class="mb-3"></div>
 
-<!--バリデーション用javascript-->
+<!--バリデーション-->
 <script>
-// jqueryの準備
-$(document).ready(function(){
-    // .btn-primary がクリックされたとき
-    $(".button").click(function(){
-        // Id[post_place]のvalue値をpost_place_textの格納
-        let user_nickname_text = $("#user_nickname").val();
-        // classの場合[.] IDの場合[#] html固有のタグ 例[h1]の場合[h1]
-        let user_email_text = $("#user_email").val();
-        let user_password_text = $("#user_password").val();
-        let user_password_confirmation_text = $("#user_password_confirmation").val();
-        let user_height_text = $("#user_height").val();
-        let user_weight_text = $("#user_weight").val();
-        let user_introduction_text = $("#user_introduction").val();
+$(function(){
+  $('#new_user').validate({
+		  rules : {
+				 "user[nickname]": {
+					required: true
+				 },
+          "user[email]": {
+					required: true
+				 },	
+          "user[password]": {
+					required: true,
+          minlength: 6
+				 },
+				  "user[password_confirmation]": {
+					required: true,
+          minlength: 6,
+          equalTo: "#user_password"
 
-
-        if (user_nickname_text == "") {
-            // バリデーションテキストが出力されていなかった場合、処理を実行
-            if($("#user_nickname_valid_message").val() != ""){
-                // inseartAfter(DOM)の後に、左辺のhtml要素を追加
-                $("<p id='user_nickname_valid_message' style='color:red'>ニックネームが空欄です</p>").insertAfter("#user_nickname");
-                $("#user_nickname").css("border-color","red");
-            }
-        } else {
-            // バリデーションテキストが出力されていた場合、処理を実行
-            if($("#user_nickname_valid_message").val() == ""){
-                $("#user_nickname_valid_message").remove();
-                $("#user_nickname").css("border-color","#ced4da");
-            }
-        }
-
-        if (user_email_text == "") {
-            if($("#user_email_valid_message").val() != ""){
-                $("<p id='user_email_valid_message' style='color:red'>メールアドレスが空欄です。</p>").insertAfter("#user_email");
-                $("#user_email").css("border-color","red");
-            }
-        } else {
-            if($("#user_email_valid_message").val() == ""){
-                $("#user_email_valid_message").remove();
-                $("#user_email").css("border-color","#ced4da");
-            }
-        }
-        if (user_password_text == "") {
-            if($("#user_password_message").val() != ""){
-                $("<p id='user_password_message' style='color:red'>パスワードが空欄です</p>").insertAfter("#user_password");
-                $("#user_password").css("border-color","red");
-            }
-        } else {
-            if($("#user_password_message").val() == "".){
-                $("#user_password_message").remove();
-                $("#user_password").css("border-color","#ced4da");
-            }
-        }
-        if (user_password_confirmation_text == "") {
-          if($("#user_password_confirmation_message").val() != ""){
-            $("<p id='user_password_confirmation_message' style='color:red'>パスワー再入力が空欄です</p>").insertAfter("#user_password_confirmation");
-            $("#user_password_confirmation").css("border-color","red");
-          }
-        } else {
-            if($("#user_password_confirmation_message").val() == ""){
-                $("#user_password_confirmation_message").remove();
-                $("#user_password_confirmation").css("border-color","#ced4da");
-            }
-        }
-        if (user_height_text == "") {
-          if($("#user_height_text_message").val() != ""){
-            $("<p id='user_height_text_message' style='color:red'>身長が空欄です</p>").insertAfter("#user_height");
-            $("#user_height").css("border-color","red");
-          }
-        } else {
-            if($("#user_height_text_message").val() == ""){
-                $("#user_height_text_message").remove();
-                $("#user_height").css("border-color","#ced4da");
-            }
-        }
-        if (user_weight_text == "") {
-          if($("#user_weight_text_message").val() != ""){
-            $("<p id='user_weight_text_message' style='color:red'>体重が空欄です</p>").insertAfter("#user_weight");
-            $("#user_weight").css("border-color","red");
-          }
-        } else {
-            if($("#user_weight_text_message").val() == ""){
-                $("#user_weight_text_message").remove();
-                $("#user_weight").css("border-color","#ced4da");
-            }
-        }
-        if (user_introduction_text == "") {
-          if($("#user_introduction_text_message").val() != ""){
-            $("<p id='user_introduction_text_message' style='color:red'>自己紹介が空欄です</p>").insertAfter("#user_introduction");
-            $("#user_introduction").css("border-color","red");
-          }
-        } else {
-            if($("#user_introduction_text_message").val() == ""){
-                $("#user_introduction_text_message").remove();
-                $("#user_introduction").css("border-color","#ced4da");
-            }
-        }        
-
-        if(!user_nickname_text || !user_email_text || !user_password_text || !user_password_confirmation_text || !user_height_text || !user_weight_text || !user_introduction_text){
-            return false;
-        }
-        $('form').submit();
-    });
-});
+				 },
+				 	"user[height]": {
+					required: true,
+          number: true
+				 },
+				 	"user[weight]": {
+					required: true,
+          number: true
+				 },
+				 	"user[introduction]": {
+					required: true,
+				 },
+				 
+		  },
+		  messages: {
+      "user[nickname]"  :{
+						required: "必須項目です。入力をお願いします。"
+				 },
+			"user[email]"  :{
+						required: "必須項目です。入力をお願いします。"
+				 },
+			"user[password]"  :{
+						required: "必須項目です。入力をお願いします。",
+	          minlength: "「パスワード」は6文字以上で入力してください"
+				 },	
+			"user[password_confirmation]"  :{
+      			required: "必須項目です。入力をお願いします。",
+            minlength: "「パスワード」は6文字以上で入力してください",
+            equalTo: "「パスワード」が一致していません",
+				 },	
+			"user[height]"  :{
+      			required: "必須項目です。入力をお願いします。",
+            number: "半角数値を入力してください。"
+				 },					 
+			"user[weight]"  :{
+      			required: "必須項目です。入力をお願いします。",
+            number: "半角数値を入力してください。"
+				 },	
+			"user[introduction]"  :{
+      			required: "必須項目です。入力をお願いします。",
+				 },			 
+      },
+   }) 
+})
 </script>
