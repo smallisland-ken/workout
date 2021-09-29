@@ -1,15 +1,11 @@
-<div class="vide_wrap" style="position:relative;">
-  <%= video_tag("/assets/videos/workoutwoman.mp4", autoplay: true, loop: true, muted: true, width: "100%", style: "min-height: 100vh;
-    height: 100vh; object-fit: cover; vertical-align:top; filter:blur(3px) contrast(65%);") %>
-  <div style="position: absolute;
-    top: calc(50% - 300px);
-    left: calc(50% - 300px);" id="fadeIn">
+<div class="position_parent">
+  <%= video_tag("/assets/videos/workoutwoman.mp4", autoplay: true, loop: true, muted: true, width: "100%", class:"background_video") %>
+  <div class="position_child", id="fadeIn">
     <h1 class="text-center mt-3 h1"><i>Workout With Friends</i></h1>
-    <div style="max-width:300px;width:300px;margin: 0 auto;">
-      <h2 style="font-size: 1.2em;text-align:center; color:white; " class="mt-1">
+    <div class="login_title">
+      <h2 class="login_h2 mt-1">
         友達を探してつながろう！<br>
         SNSでつながる新しい形の筋トレ
-        
       </h2>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
       <div class="field">
