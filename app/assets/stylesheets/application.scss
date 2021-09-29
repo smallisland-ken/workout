@@ -62,21 +62,6 @@
     justify-content: center;
 }
 
-.video {
- width: 100vw;
- height: 100vh;
- position: absolute;
- display: flex;
- justify-content: center;
- object-fit: cover;
- top: 0;
- z-index: -2;
-}
-
-.video_wrap {
-  position: relative;
-}
-
 h1.h1 {
   font-family: serif;          
   color: #fff;
@@ -93,8 +78,32 @@ h1.h1 {
 }
 
 // ログインページのCSS
-.position-absolute{
+.position_parent{
+    position:relative;
+}
+
+.position_child{
+    position: absolute;
     top: calc(50% - 300px);
     left: calc(50% - 300px);
-    
+}
+
+.background_video{
+    min-height: 100vh;
+    height: 100vh; 
+    object-fit: cover; 
+    vertical-align:top; 
+    filter:blur(3px) 
+    contrast(65%);
+}
+
+.login_title{
+    max-width:300px;
+    width:300px;
+    margin: 0 auto;
+}
+.login_h2{
+    font-size: 1.2em;
+    text-align:center; 
+    color:white; 
 }
