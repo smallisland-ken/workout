@@ -1,5 +1,5 @@
 # SNS型筋トレアプリ
-Workout with People
+Workout with friends
 
 ## サイト概要
 
@@ -58,12 +58,14 @@ Workout with People
 ## 設計書
 ※ チャレンジ項目合格後に提出
 
-
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1Ec3iw17Wf1NC05l_vALVRGzP7MRgyw7Y/edit?usp=sharing&ouid=108696171954783896322&rtpof=true&sd=true
 
 チャレンジ要素一覧になかったフォロー機能をいれています。
 (応用課題で実装済みです)
+
+## デモ動画
+https://drive.google.com/file/d/14P1E-tb7_6VrSihKcvDLARHKUQyuH1so/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
