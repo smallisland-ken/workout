@@ -9,7 +9,7 @@ Workout with friends
 人と繋がりながらい筋トレをすることで  
 モチベーションを保ちながら筋トレができます。
 
-サイト内では下記機能が使えます。
+サイト内では下記機能が使えます♪
 
 - タイムライン機能(筋トレの記録)
 - 筋トレ記録
@@ -21,7 +21,7 @@ Workout with friends
 
 ### サイトテーマ
 
-新しい形の筋トレSNS。 
+新しい形の筋トレSNS。
 
 20代～30代の男女がターゲットで  
 筋トレを通じて新たな出会いの場にもなります！
@@ -56,7 +56,17 @@ Workout with friends
 - 筋トレ後の帰宅途中や食事中
 
 ## 設計書
-※ チャレンジ項目合格後に提出
+ER図：
+![image](https://user-images.githubusercontent.com/84826887/135999529-688de07f-e34a-4af3-8979-bb7a59c3fee3.png)
+
+UIフロー：
+https://docs.google.com/presentation/d/1cN2Ms0dFmZO0SSdd6cVxX4iVi0Gcsdsy/edit?usp=sharing&ouid=108696171954783896322&rtpof=true&sd=true
+
+アプリケーション詳細設計書：
+https://docs.google.com/spreadsheets/d/1yWq-Rbgsl-YkL8buP0ogXpfo3deLXvoq/edit?usp=sharing&ouid=108696171954783896322&rtpof=true&sd=true
+
+テーブル定義書：
+https://docs.google.com/spreadsheets/d/1hoQw_zv8ITNnbYXy3wI6u01sbR_rQ332/edit?usp=sharing&ouid=108696171954783896322&rtpof=true&sd=true
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1Ec3iw17Wf1NC05l_vALVRGzP7MRgyw7Y/edit?usp=sharing&ouid=108696171954783896322&rtpof=true&sd=true
