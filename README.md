@@ -56,7 +56,7 @@ Workout with friends
 - 筋トレ後の帰宅途中や食事中
 
 ## 設計書
-ER図：
+ER図：  
 ![image](https://user-images.githubusercontent.com/84826887/135999529-688de07f-e34a-4af3-8979-bb7a59c3fee3.png)
 
 UIフロー：
