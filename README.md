@@ -1,5 +1,5 @@
 # SNS型筋トレアプリ
-Workout with friends
+～ Workout with friends ～
 
 ## サイト概要
 
