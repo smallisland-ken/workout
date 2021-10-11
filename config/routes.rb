@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     collection do
       get 'diary'
       get 'friends/:id', to: 'posts#friend', as: 'friend'
+      get 'calendar'
     end
   end
 

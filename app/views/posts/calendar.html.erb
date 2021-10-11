@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-12 mt-3 mx-auto">
+            <h2><i>Workout Calendar</i></h2>
+            <%= month_calendar events: @titles do |date, titles| %>
+              <%= date.day %>
+                <% titles.each do |title| %>
+                <div>
+                  <%= link_to title.title, title %>
+                </div>
+              <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>

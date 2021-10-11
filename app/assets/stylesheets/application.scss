@@ -16,6 +16,7 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import "simple_calendar"; 
 
 @import "slick";
 @import "slick-theme"; 
@@ -31,6 +32,11 @@
 .fill { 
     min-height: 100%;
     height: 100%;
+}
+
+// ヘッダーの色
+.header-background{
+    background-color: #555555;
 }
 
 .notice {
@@ -106,4 +112,29 @@ h1.h1 {
     font-size: 1.2em;
     text-align:center; 
     color:white; 
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {
+      background-color: #FFEFD5;
+  }
+  .wday-6 {
+      background-color: #FFEFD5;
+  }
+
+  .today {
+      background-color: #F0F8FF;
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
 }

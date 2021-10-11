@@ -11,6 +11,12 @@ class Post < ApplicationRecord
 
   # 閲覧数用記述
   is_impressionable
+  
+  # simplecalendar用の記述
+  # start_timeがないとエラーになる
+  def start_time
+    self.date_on
+  end
 
   # userのアソシエーション
   belongs_to :user

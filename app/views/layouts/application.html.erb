@@ -24,7 +24,7 @@
     
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark header-background">
                 <a class="navbar-brand" href="/"><i>Workout with Friends</i></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -40,6 +40,11 @@
                         <li class="nav-item">
                             <%= link_to diary_posts_path, method: :get, class: 'fas fa-book nav-link text-light mt-1' do %>
                             筋トレ日記
+                            <% end %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to calendar_posts_path, method: :get, class: 'fas fa-calendar nav-link text-light mt-1' do %>
+                            カレンダー
                             <% end %>
                         </li>
                         <li class="nav-item">
