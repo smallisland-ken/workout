@@ -115,8 +115,6 @@ h1.h1 {
 }
 
 .simple-calendar {
-  .day {}
-
   .wday-0 {
       background-color: #FFEFD5;
   }
@@ -127,14 +125,9 @@ h1.h1 {
   .today {
       background-color: #F0F8FF;
   }
-  .past {}
-  .future {}
+}
 
-  .start-date {}
-
-  .prev-month {}
-  .next-month { }
-  .current-month {}
-
-  .has-events {}
+// カレンダーの月部分のフォントサイズ
+.font-size-calendar {
+    font-size: 33px;
 }
