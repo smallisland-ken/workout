@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     tags = params[:post][:tag_id].split(',')
     if @post.update_attributes(post_params)
       @post.update_tags(tags)
-      redirect_to diary_posts_path, success: '更新に成功しました！'
+      redirect_to root_path, success: '更新に成功しました！'
     else
       render :edit
     end
@@ -79,7 +79,7 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path, danger: '削除に成功しました！'
+    redirect_to root_path, success: '削除に成功しました！'
   end
 
   private

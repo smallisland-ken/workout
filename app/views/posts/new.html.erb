@@ -59,6 +59,9 @@
 
 <!--レビュー用jquery-->
 <script>
+// ブラウザバックすると☆が増えてしまったので下記を追加
+// 参考記事：https://qiita.com/hana_s_e_0925/items/1a72927b03c01229de07
+ $('#star').empty(); 
  $('#star').raty({
    size: 36,
    starOff: "<%= asset_path('star-off.png') %>",
