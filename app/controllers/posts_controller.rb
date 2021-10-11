@@ -30,6 +30,11 @@ class PostsController < ApplicationController
     # いいねランキング
     @like_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
+  
+  # カレンダー
+  def calendar
+    @titles = current_user.posts.all
+  end
 
   # 友達の投稿一覧
   def friend

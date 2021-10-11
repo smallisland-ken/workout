@@ -1,4 +1,5 @@
 ja:
+
   activerecord:
     models:
       user: ユーザー
@@ -16,3 +17,4 @@ ja:
         place: 筋トレ場所
         title: タイトル
         rate: 筋トレ達成度
+        
