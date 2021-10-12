@@ -68,12 +68,6 @@
     justify-content: center;
 }
 
-h1.h1 {
-  font-family: serif;          
-  color: #fff;
-  font-size: 400%;
-}
-
 .error_list {
     padding: 10px 30px;
 	color: #ff2e5a;
@@ -90,8 +84,11 @@ h1.h1 {
 
 .position_child{
     position: absolute;
-    top: calc(50% - 300px);
-    left: calc(50% - 300px);
+    top: calc(43%);
+    left: calc(50%);
+    // これをいれないスマホで綺麗にみれない
+    // 参考：https://www.billionwallet.com/homepage/transform-translate.html
+    transform: translate(-50%,-50%);
 }
 
 .background_video{
@@ -101,6 +98,12 @@ h1.h1 {
     vertical-align:top; 
     filter:blur(3px) 
     contrast(65%);
+}
+
+h1.h1 {
+  font-family: serif;          
+  color: #fff;
+  font-size: 280%;
 }
 
 .login_title{
@@ -113,6 +116,14 @@ h1.h1 {
     text-align:center; 
     color:white; 
 }
+
+// トップページ
+
+// タイムラインのトップ画の名前の大きさ
+.allign-center{
+    font-size: 67%;
+}
+
 
 .simple-calendar {
   .wday-0 {
