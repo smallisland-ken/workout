@@ -1,6 +1,6 @@
 <% post_comments.each do |comment| %>
     <div class="col-3 text-center">
-        <%= attachment_image_tag comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", class:"rounded-circle"; %>
+        <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", size: '40x40' , class:"rounded-circle"; %>
         <div class="small mb-4"><%= comment.user.nickname %>
         </div>
     </div>
