@@ -6,7 +6,8 @@
               <%= date.day %>
                 <% titles.each do |title| %>
                 <div>
-                  <%= link_to title.title, title %>
+                  <!--truncateでカレンダー内の文字をレスポンシブ対応している-->
+                  <%= link_to title.title.truncate(6), title, class:"calendar-font" %>
                 </div>
               <% end %>
             <% end %>
