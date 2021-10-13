@@ -2,52 +2,54 @@
     <div class="row">
         <div class="col-sm-6 col-md7 col-lg-9 mt-3 mx-auto">
             <h2><i>Workout Diary</i></h2>
+            <div class="table-responsive">
                 <table class="table mt-4">
-                <thead>
-                    <tr>
-                        <!--text-nowrapを入れると折り返さなくなる-->
-                        <th class="text-center text-nowrap">日付</th>
-                        <th class="text-center text-nowrap">時刻</th>
-                        <th class="text-center text-nowrap">タイトル</th>
-                        <th class="text-center text-nowrap">筋トレ場所</th>
-                        <th class="text-center text-nowrap">タグ付け</th>
-                        <th class="text-center text-nowrap">筋トレ達成度</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <% @diary.each do |diary| %>
-                    <tr>
-                        <td class="text-center">
-                            <%= link_to post_path(diary) do %>
-                                <%= diary.date_on %>
-                            <% end %>
-                        </td>
-                        <td class="text-center"><%= diary.time_at.strftime('%H:%M') %></td>
-                        <td class="text-center"><%= diary.title %></td>
-                        <td class="text-center"><%= diary.place %></td>
-                        <td class="text-center"><%= diary.tags.pluck(:name).join(',') %></td>
-                        <td class="text-center" id="star<%= diary.id %>">
-                            <!--@diaryはallで引っ張ってきているので、eachの中に入れないと機能しない-->
-                            <script>
-                            // ブラウザバックすると☆が増えてしまったので下記を追加
-                            // 参考記事：https://qiita.com/hana_s_e_0925/items/1a72927b03c01229de07
-                                $('#star<%= diary.id %>').empty(); 
-                                $('#star<%= diary.id %>').raty({
-                                    size: 36,
-                                    starOff:  '<%= asset_path('star-off.png') %>',
-                                    starOn : '<%= asset_path('star-on.png') %>',
-                                    starHalf: '<%= asset_path('star-half.png') %>',
-                                    half: true,
-                                    // 読み込みだけで入力できない
-                                    readOnly: true,
-                                    score: <%= diary.rate %>,
-                                });
-                            </script>
-                        </td>
-                    </tr>
-                 <% end %>
-                </tbody>
-            </table>
+                    <thead>
+                        <tr>
+                            <!--text-nowrapを入れると折り返さなくなる-->
+                            <th class="text-center text-nowrap">日付</th>
+                            <th class="text-center text-nowrap">時刻</th>
+                            <th class="text-center text-nowrap">タイトル</th>
+                            <th class="text-center text-nowrap">筋トレ場所</th>
+                            <th class="text-center text-nowrap">タグ付け</th>
+                            <th class="text-center text-nowrap">筋トレ達成度</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% @diary.each do |diary| %>
+                        <tr>
+                            <td class="text-center">
+                                <%= link_to post_path(diary) do %>
+                                    <%= diary.date_on %>
+                                <% end %>
+                            </td>
+                            <td class="text-center"><%= diary.time_at.strftime('%H:%M') %></td>
+                            <td class="text-center"><%= diary.title %></td>
+                            <td class="text-center"><%= diary.place %></td>
+                            <td class="text-center"><%= diary.tags.pluck(:name).join(',') %></td>
+                            <td class="text-center" id="star<%= diary.id %>">
+                                <!--@diaryはallで引っ張ってきているので、eachの中に入れないと機能しない-->
+                                <script>
+                                // ブラウザバックすると☆が増えてしまったので下記を追加
+                                // 参考記事：https://qiita.com/hana_s_e_0925/items/1a72927b03c01229de07
+                                    $('#star<%= diary.id %>').empty(); 
+                                    $('#star<%= diary.id %>').raty({
+                                        size: 36,
+                                        starOff:  '<%= asset_path('star-off.png') %>',
+                                        starOn : '<%= asset_path('star-on.png') %>',
+                                        starHalf: '<%= asset_path('star-half.png') %>',
+                                        half: true,
+                                        // 読み込みだけで入力できない
+                                        readOnly: true,
+                                        score: <%= diary.rate %>,
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                     <% end %>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

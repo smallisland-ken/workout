@@ -21,18 +21,17 @@
                         <div>
                             <div class="far fa-comment mr-1"> <%= @post.comments.count %> comments</div></br>
                                 <div class="far fa-thumbs-up">
-                                    <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like', locals: {post: @post}%>
-                                        likes
-                                    </span>
+                                    <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like', locals: {post: @post}%></span>
+                                    likes
                                 </div></br>
                             <div class="far fa-eye mr-1"> <%=  @post.impressionist_count %> views</div>
                         </div>
                         <div class="mt-3">
-                            投稿日：<%= @post.date_on %>
+                            Date：<%= @post.date_on %>
                         </div>  
                         <div class="mt-2">
-                            タイトル：</br><%= @post.title %>
-                            <p class="mt-2">投稿内容：</br><%= @post.content %></p>   
+                            Title：</br><%= @post.title %>
+                            <p class="mt-2">Content：</br><%= @post.content %></p>   
                         </div>
                         <% if @tags.present? %>
                             <div class="fas fa-tags mt-2">

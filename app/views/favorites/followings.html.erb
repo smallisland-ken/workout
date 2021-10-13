@@ -2,29 +2,32 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md7 col-lg-9 mt-3 mx-auto">
-    <h2><i>Followings</i></h2>
-    <table class="table mt-4"">
-      <thead>
-        <tr>
-          <th class="text-center text-nowrap">プロフィール画像</th>
-          <th class="text-center text-nowrap">名前</th>
-          <th class="text-center text-nowrap">フォロー数</th>
-          <th class="text-center text-nowrap">フォロワー数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td class="text-center align-middle"><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %></td>
-            <td class="text-center align-middle"><%= user.nickname %></td>
-            <td class="text-center align-middle">フォロー数: <%= user.followings.count %></td>
-            <td class="text-center align-middle">フォロワー数: <%= user.followers.count %></td>
-          </tr>
+      <h2><i>Followings</i></h2>
+      <div class="table-responsive">
+        <table class="table mt-4"">
+          <thead>
+            <tr>
+              <th class="text-center text-nowrap">プロフィール画像</th>
+              <th class="text-center text-nowrap">名前</th>
+              <th class="text-center text-nowrap">フォロー数</th>
+              <th class="text-center text-nowrap">フォロワー数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td class="text-center align-middle"><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %></td>
+                <td class="text-center align-middle"><%= user.nickname %></td>
+                <td class="text-center align-middle">フォロー数: <%= user.followings.count %></td>
+                <td class="text-center align-middle">フォロワー数: <%= user.followers.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% else %>
+          <p>ユーザーはいません</p>
         <% end %>
-      </tbody>
-    </table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+      </div>
+    </div>
   </div>
 </div>
