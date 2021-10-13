@@ -124,7 +124,6 @@ h1.h1 {
     font-size: 67%;
 }
 
-
 .simple-calendar {
   .wday-0 {
       background-color: #FFEFD5;
@@ -141,4 +140,9 @@ h1.h1 {
 // カレンダーの月部分のフォントサイズ
 .font-size-calendar {
     font-size: 33px;
+}
+
+// カレンダーのタイトルのフォントサイズ
+.calendar-font {
+    font-size: 10px;
 }

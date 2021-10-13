@@ -1,40 +1,44 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
+        <div class="col-lg-6 mx-auto mt-3">
             <h2><i>Post Detail</i></h2>
-            <div class="card w-100 mx-auto mt-4 shadow-lg">
+            <div class="mt-4 shadow-lg">
                 <div class="slider">
-                <% @post.post_images.each do |image| %>
-                <%= attachment_image_tag image, :image, class:"card-img-top"; %>
-                <% end %>
-            </div>
+                    <% @post.post_images.each do |image| %>
+                        <%= attachment_image_tag image, :image, class:"card-img-top"; %>
+                    <% end %>
+                </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-3 text-center">
-                        <%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
-                        <p class="mt-2">
+                        <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", size: '40x40', class:"mt-3 rounded-circle"; %>
+                        <p class="small mt-2">
                         <%= @post.user.nickname %>
                         </p>
                     </div>
                     <div class="col-9">
                         <p class="card-title"></P>
                         <div>
-                            <div class="far fa-comment mr-1"> <%= @post.comments.count %> comments</div>
-                                    <div class="far fa-thumbs-up ml-2">
-                                    <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like', locals: {post: @post}%></span>
-                                    likes</div> 
-                            <br><div class="far fa-eye mr-1"> <%=  @post.impressionist_count %> views</div>
+                            <div class="far fa-comment mr-1"> <%= @post.comments.count %> comments</div></br>
+                                <div class="far fa-thumbs-up">
+                                    <span id="likes_<%= @post.id %>"><%= render partial: 'likes/like', locals: {post: @post}%>
+                                        likes
+                                    </span>
+                                </div></br>
+                            <div class="far fa-eye mr-1"> <%=  @post.impressionist_count %> views</div>
                         </div>
                         <div class="mt-3">
                             投稿日：<%= @post.date_on %>
                         </div>  
-                        <div class="mt-1">
-                            タイトル：<%= @post.title %>
-                            <p class="mt-1">投稿内容：<%= @post.content %></p>   
+                        <div class="mt-2">
+                            タイトル：</br><%= @post.title %>
+                            <p class="mt-2">投稿内容：</br><%= @post.content %></p>   
                         </div>
-                        <div class="fas fa-tags mt-2">
-                        </div>
-                        <%= @tags %>
+                        <% if @tags.present? %>
+                            <div class="fas fa-tags mt-2">
+                            </div>
+                            <%= @tags %>
+                        <% end %>
                         <% if @post.user == current_user %>
                             <div class="text-right mt-3 mb-1">
                                 <%= link_to "Edit", edit_post_path(@post), method: :get, class: "btn btn-primary" %></td>
