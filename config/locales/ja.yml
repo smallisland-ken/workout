@@ -22,4 +22,32 @@ ja:
     previous: "前月"
     next: "翌月"
     week: Woche
+    
+  ja:
+  application:
+    application:
+    # ヘッダーのログアウト時の翻訳
+      signup: " 新規登録"
+      signin: " ログイン"  
+    # ヘッダーのログイン時の翻訳
+      workout_friends: " 筋トレ仲間"
+      workout_diary: " 筋トレ日記"
+      calendar: " カレンダー"
+      notification: " 通知機能"
+      mypage: " マイページ"
+      logout: " ログアウト"
+      partial_match: "部分一致"
+      perfect_match: "完全一致"
+      forward_match: "前方一致"
+      backward_match: "後方一致"
+      
+  devise:
+    sessions:
+      new:
+        login_message: "友達を探してつながろう！"
+        login_message2: "SNSでつながる新しい形の筋トレ"
+
+
+      
+
         

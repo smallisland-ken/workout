@@ -27,70 +27,74 @@
     
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark header-background">
-                <a class="navbar-brand" href="/"><i>Workout with Friends</i></a>
+            <% if user_signed_in? %>
+                <nav class="navbar navbar-expand-lg navbar-dark header-background">
+                    <div class="navbar-brand">
+                        <%= link_to root_path, class: 'nav-link text-light' do %>
+                            <i>Workout with Friends</i>
+                        <% end %>
+                    </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <% if user_signed_in? %>
-                        <li class="nav-item active">
-                            <%= link_to users_friends_path, class: 'fas fa-running nav-link text-light mt-1' do %>
-                            筋トレ仲間
-                            <% end %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to diary_posts_path, method: :get, class: 'fas fa-book nav-link text-light mt-1' do %>
-                            筋トレ日記
-                            <% end %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to calendar_posts_path, method: :get, class: 'fas fa-calendar nav-link text-light mt-1' do %>
-                            カレンダー
-                            <% end %>
-                        </li>
-                        <li class="nav-item">
-                            <!--通知があった際に色が出るように表示-->
-                            <% if unread_notifications.any? %>
-                            <i class="fa fa-circle" style="color: gold;"></i>
-                            <% end %>
-                            <%= link_to notifications_path, method: :get, class: 'fas fa-bell nav-link text-light mt-1' do %>
-                            通知機能
-                            <% end %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to edit_user_path(current_user.id), method: :get, class: 'fas fa-user-friends nav-link text-light mt-1' do %>
-                            マイページ
-                            <% end %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light mt-1' do %>
-                            ログアウト
-                            <% end %>
-                        </li>
-                    </ul>
-                        <%= form_with url:search_path, method: :get, local: true do |f| %>
-                            <%= f.text_field :word, placeholder: "Find your friends!", class:"form-control", autofocus: true %>
-                            <%= f.select :search, options_for_select([["部分一致","partial_match"],["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"]]), class:"mr-2" %>
-                            <%= f.submit "Search", class:"btn btn-outline-success ml-2 mt-2" %>
-                        <% end %>
-                    <% else %>
-                    <ul class="navbar-nav mr-auto mt-4 mb-4">
-                        <li class="nav-item active">
-                            <%= link_to new_user_registration_path, class: 'fas fa-user-plus nav-link text-light mt-1' do %>
-                                新規登録
-                            <% end %>          
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <%= link_to t('application.application.workout_friends'), users_friends_path, class: 'fas fa-running nav-link text-light mt-1' %>
                             </li>
                             <li class="nav-item">
-                                <%= link_to new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light mt-1' do %>
-                            ログイン
-                            <% end %>          
-                        </li>
-                    </ul>
-                </div>
-                <% end %>
-            </nav>        
+                                <%= link_to t('application.application.workout_diary'), diary_posts_path, method: :get, class: 'fas fa-book nav-link text-light mt-1' %>
+                            </li>
+                            <li class="nav-item">
+                                <%= link_to t('application.application.calendar'), calendar_posts_path, method: :get, class: 'fas fa-calendar nav-link text-light mt-1' %>
+                            </li>
+                            <li class="nav-item">
+                            <!--通知があった際に色が出るように表示-->
+                            <% if unread_notifications.any? %>
+                                <i class="fa fa-circle" style="color: gold;"></i>
+                            <% end %>
+                                <%= link_to t('application.application.notification'), notifications_path, method: :get, class: 'fas fa-bell nav-link text-light mt-1' %>
+                            </li>
+                            <li class="nav-item">
+                                <%= link_to t('application.application.mypage'), edit_user_path(current_user.id), method: :get, class: 'fas fa-user-friends nav-link text-light mt-1' %>
+                            </li>
+                            <li class="nav-item">
+                                <%= link_to t('application.application.logout'), destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light mt-1' %>
+                            </li>
+                        </ul>
+                        <%= form_with url:search_path, method: :get, local: true do |f| %>
+                            <%= f.text_field :word, placeholder: "Find your friends!", class:"form-control", autofocus: true %>
+                            <%= f.select :search, options_for_select([[ t('application.application.partial_match'),"partial_match"],[t('application.application.perfect_match'),"perfect_match"], [t('application.application.forward_match'),"forward_match"],  [t('application.application.backward_match'),"backward_match"]]), class:"mr-2" %>
+                            <%= f.submit "Search", class:"btn btn-outline-success ml-2 mt-2" %>
+                        <% end %>
+                        <br><%= link_to('日本語', :locale => 'ja') %>
+                        <%= link_to('English', :locale => 'en') %>
+                    </div>
+                </nav>        
+            <% else %>
+                <nav class="navbar navbar-expand-lg navbar-dark header-background">
+                    <div class="navbar-brand">
+                        <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                            <i>Workout with Friends</i>
+                        <% end %>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <%= link_to t('application.application.signup'), new_user_registration_path, class: 'fas fa-user-plus nav-link text-light mt-1' %>
+                            </li>
+                            <li class="nav-item">
+                                <%= link_to t('application.application.signin'), new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light mt-1' %>
+                            </li>
+                            <br><%= link_to('日本語', :locale => 'ja') %>
+                            <%= link_to('English', :locale => 'en') %>
+                        </ul>
+                    </div>            
+                </nav>        
+            <% end %>
         </header>
             <!--flash_typeがどんなフラッシュメッセージのタイプなのか・flashが実際のメッセージ-->
             <% flash.each do |flash_type, flash| %>
