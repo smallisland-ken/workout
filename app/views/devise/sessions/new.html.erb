@@ -4,8 +4,8 @@
     <h1 class="text-center mt-3 h1"><i>Workout with Friends</i></h1>
     <div class="login_title">
       <h2 class="login_h2 mt-1">
-        友達を探してつながろう！<br>
-        SNSでつながる新しい形の筋トレ
+        <%= t 'devise.sessions.new.login_message' %></br>
+        <%= t 'devise.sessions.new.login_message2' %>
       </h2>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
       <div class="field">

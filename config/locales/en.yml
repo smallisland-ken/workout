@@ -29,5 +29,34 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+
+# ymlファイルはインデントが非常に重要。
+# インデントの位置が違うと読み込みができなくなるので注意！
+
 en:
   hello: "Hello world"
+  
+  en:
+  application:
+    application:
+    # ヘッダーのログアウト時の翻訳
+      signup: " Sign up"
+      signin: " Log in"
+    # ヘッダーのログイン時の翻訳
+      workout_friends: " Workout friends"
+      workout_diary: " Workout diary"
+      calendar: " Calendar"
+      notification: " Notification"
+      mypage: " Mypage"
+      logout: " logout"
+      partial_match: "Partial match"
+      perfect_match: "Perfect match"
+      forward_match: "Forward match"
+      backward_match: "Backward match"
+      
+  devise:
+    sessions:
+      new:
+        login_message: "Find your workout friends!"
+        login_message2: "A new type of a workout SNS."
+      
