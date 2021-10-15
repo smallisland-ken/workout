@@ -1,5 +1,5 @@
 # SNS型筋トレアプリ
-～ Workout with friends ～
+～ Workout with friends ～  
 新しい筋トレの友達をさがそう！  
 新しい形の筋トレSNS。
 
