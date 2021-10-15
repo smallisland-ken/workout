@@ -20,27 +20,27 @@
                 
            <%= form_with model:@user, id: 'edit_user', local:true do |f| %>
                 <div class="form-group mt-3">
-                    <label>ニックネーム</label>
+                    <label><%= t 'users.edit.nickname' %></label>
                     <%= f.text_field :nickname, autofocus: true, class: "form-control" %>
                 </div>
                
                 <div class="form-group">
-                <label>プロフィール画像</label>
+                <label><%= t 'users.edit.profile_image' %></label>
                     <%= f.attachment_field :profile_image, class: "form-control-file user_image" %>
                 </div>
                
                 <div class="form-group">
-                <label>身長</label>
+                <label><%= t 'users.edit.height' %></label>
                     <%= f.text_field :height , class: "form-control" %>
                 </div>
                
                 <div class="form-group">
-                <label>体重</label>
+                <label><%= t 'users.edit.weight' %></label>
                     <%= f.text_field :weight , class: "form-control" %>
                 </div>
                 
                 <div class="form-group">
-                <label>自己紹介</label>
+                <label><%= t 'users.edit.introduction' %></label>
                     <%= f.text_area :introduction , class: "form-control" %>
                 </div>
               

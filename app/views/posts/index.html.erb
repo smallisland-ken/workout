@@ -70,7 +70,9 @@
         <div class="col-sm-1 col-md-1 col-lg-1 px-1 px-sm-1 text-right fixed-bottom mb-2">
             <div class="ue text-right fixed-bottom mb-2">
                 <%= link_to new_post_path do %>
-                    <button type="button" class="ue2 btn btn-primary rounded-circle mb-5 mr-5 sticky-bottom" style="width:4.5rem;height:4.5rem;">新規<br>投稿</button>
+                    <button type="button" class="ue2 btn btn-primary rounded-circle mb-5 mr-5 sticky-bottom" style="width:4.5rem;height:4.5rem;">
+                        <%= t 'posts.index.new_post' %><br><%= t 'posts.index.new_post2' %>
+                    </button>
                 <% end %> 
             </div>  
         </div>

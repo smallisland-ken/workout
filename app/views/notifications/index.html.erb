@@ -13,7 +13,7 @@
                 <div class="text-right mb-3">
                     <%= link_to notification_path(@notifications), method: :delete do %>
                         <i class="fas fa-trash mt-4" style="color: black;"></i>
-                        <h7 style="color: black;">全削除</h7>
+                        <h7 style="color: black;"><%= t 'notifications.index.delete' %></h7>
                     <% end %>
                 </div>
             <% end %>

@@ -9,59 +9,60 @@
 
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :ニックネーム %>
+          <label><%= t 'devise.registrations.new.nickname' %></label>
           <%= f.text_field :nickname, autofocus: true, class:"form-control mt-1" %>
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :プロフィール画像 %>
+          <label><%= t 'devise.registrations.new.profile_image' %></label>
           <br><%= f.attachment_field :profile_image, class:"mt-1" %>
         </div>  
       </div>  
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :メールアドレス %><br />
+          <label><%= t 'devise.registrations.new.email_address' %></label>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mt-1" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          (最低<%= @minimum_password_length %>文字入力)
-          <% end %><br />
+          <label><%= t 'devise.registrations.new.password' %></label>
+          <% if @minimum_password_length %><br/>
+          (<%= t'devise.registrations.new.atleast' %><%= @minimum_password_length %><%= t'devise.registrations.new.chracters' %>)
+          <% end %><br/>
           <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :パスワード再入力 %><br />
+          <label><%= t 'devise.registrations.new.confirm_password' %></label>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1" %>
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :身長 %><br />
+          <label><%= t 'devise.registrations.new.height' %></label>
           <%= f.text_field :height, autofocus: true, class:"form-control mt-1" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :体重 %><br />
+          <label><%= t 'devise.registrations.new.weight' %></label>
           <%= f.text_field :weight, autofocus: true, class:"form-control mt-1" %>
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :性別 %><br />
+          <label><%= t 'devise.registrations.new.gender' %></label></br>
+          <!--<= select :user, :gender, User.genders.map { |k, v| [t("enums.user.gender.#{k}"), v] } %>-->
           <%= f.select :gender, User.genders.keys, autofocus: true %>
           <!--モデル名＋モデルに記載のカラムの複数形(なぜなら選択肢は複数あるため-->
         </div>
@@ -69,7 +70,7 @@
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :自己紹介 %><br />
+          <label><%= t 'devise.registrations.new.introduction' %></label>
           <%= f.text_area :introduction, autofocus: true, class:"form-control" %>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <div class="simple-calendar">
   <div class="calendar-heading text-center mb-2">
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class:"btn btn-primary btn-sm mb-3 mr-2" %>
-    <span class="calendar-title font-size-calendar"><%= start_date.year %>年<%= t('date.month_names')[start_date.month] %></span>
+    <span class="calendar-title font-size-calendar"><%= start_date.year %><%= t 'simple_calendar.year' %><%= t('date.month_names')[start_date.month] %></span>
     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class:"btn btn-primary btn-sm mb-3 ml-2" %>
   </div>
 

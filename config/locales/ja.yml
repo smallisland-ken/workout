@@ -22,8 +22,8 @@ ja:
     previous: "前月"
     next: "翌月"
     week: Woche
-    
-  ja:
+    year: "年"
+
   application:
     application:
     # ヘッダーのログアウト時の翻訳
@@ -46,6 +46,112 @@ ja:
       new:
         login_message: "友達を探してつながろう！"
         login_message2: "SNSでつながる新しい形の筋トレ"
+    
+    registrations:
+      new:
+        nickname: "ニックネーム"
+        profile_image: "プロフィール画像"
+        email_address: "メールアドレス"
+        password: "パスワード"
+        atleast: "最低"
+        chracters: "文字入力必須"
+        confirm_password: "パスワード再入力"
+        height: "身長"
+        weight: "体重"
+        gender: "性別"
+        introduction: "自己紹介"
+        
+    enums:
+      user:
+        gender:
+          man : "男性"
+          woman : "女性"
+          other : "その他"
+          
+  posts:
+    new:
+      date: "日付入力"
+      time: "時刻入力"
+      upload_picture: "画像アップロード"
+      workout_place: "筋トレ場所"
+      tag: "タグ付け"
+      tag_description: "タグが複数の場合は','で区切ってください"
+      achievement_rate: "筋トレ達成度"
+      title: "タイトル"
+      content: "筋トレ内容"
+    edit:
+      date: "日付入力"
+      time: "時刻入力"
+      upload_picture: "画像アップロード"
+      workout_place: "筋トレ場所"
+      tag: "タグ付け"
+      tag_description: "タグが複数の場合は','で区切ってください"
+      achievement_rate: "筋トレ達成度"
+      title: "タイトル"
+      content: "筋トレ内容"
+    index:
+      height: "身長"
+      weight: "体重"
+      new_post: "新規"
+      new_post2: "投稿"
+    diary:
+      date: "日付"
+      time: "時刻"
+      title: "タイトル"
+      workout_place: "筋トレ場所"
+      tag: "タグ付け"
+      achievement_rate: "筋トレ達成度"      
+      
+  users:
+    friends:
+      profile_picture: "プロフィール画像"
+      friends_lists: "友達一覧"
+      weight: "体重"
+      height: "身長"      
+      introduction: "自己紹介"
+      follow: "フォローボタン"  
+    edit:
+      nickname: "ニックネーム"
+      profile_image: "プロフィール画像"
+      height: "体重"
+      weight: "身長"
+      introduction: "自己紹介"
+      
+  notifications:
+    index:
+      followed_you: "あなたをフォロー!" 
+      ago: "前"
+      delete: "全削除"
+
+  favorites:
+    followings:
+      profile_image: "プロフィール画像"
+      nickname: "ニックネーム"
+      follows: "フォロー数"
+      followers: "フォロワー数"
+      following_people: "人"
+      follower_people: "人"      
+    followers:
+      profile_image: "プロフィール画像"
+      nickname: "ニックネーム"
+      follows: "フォロー数"
+      followers: "フォロワー数"
+      following_people: "人"
+      follower_people: "人"
+      
+  searches:
+    search:
+      profile_image: "プロフィール画像"
+      nickname: "ニックネーム"
+      height: "体重"
+      weight: "身長"
+      introduction: "自己紹介"
+      follow: "フォローボタン"
+        
+
+
+
+
 
 
       

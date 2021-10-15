@@ -35,8 +35,13 @@
 
 en:
   hello: "Hello world"
-  
-  en:
+
+  simple_calendar:
+    previous: "Last month"
+    next: "Next month"
+    week: Woche
+    year: ", "
+
   application:
     application:
     # ヘッダーのログアウト時の翻訳
@@ -59,4 +64,104 @@ en:
       new:
         login_message: "Find your workout friends!"
         login_message2: "A new type of a workout SNS."
-      
+    
+    registrations:
+      new:
+        nickname: "Nickname"
+        profile_image: "Profile picture"
+        email_address: "Email address"
+        password: "Password"
+        atleast: "at least "
+        chracters: " chracters minimum"
+        confirm_password: "Confirm password"
+        height: "Height"
+        weight: "Weight"
+        gender: "Gender"
+        introduction: "Introduction"
+        
+  enums:
+    user:
+      gender:
+        man : "Man"
+        woman : "Woman"
+        other : "Prefer not to say"
+
+  posts:
+    new:
+      date: "Date"
+      time: "Time"
+      upload_picture: "Upload pictures"
+      workout_place: "Workout place"
+      tag: "Tag"
+      tag_description: "Please separate by ',' to add multiple tags."
+      achievement_rate: "Achievement rate"
+      title: "Title"
+      content: "Content"
+    edit:
+      date: "Date"
+      time: "Time"
+      upload_picture: "Upload pictures"
+      workout_place: "Workout place"
+      tag: "Tag"
+      tag_description: "Please separate by ',' to add multiple tags."
+      achievement_rate: "Achievement rate"
+      title: "Title"
+      content: "Content"      
+    index:
+      height: "Height"
+      weight: "Weight"
+      new_post: "New"
+      new_post2: "post"
+    diary:
+      date: "Date"
+      time: "Time"
+      title: "Title"
+      workout_place: "Workout place"
+      tag: "Tag"
+      achievement_rate: "Achievement rate"
+  
+  users:
+    friends:
+      profile_picture: "Profile picture"
+      friends_lists: "Friends' lists"
+      weight: "Weight"
+      height: "Height"
+      introduction: "Introduction"
+      follow: "Follow"
+    edit:
+      nickname: "Nickname"
+      profile_image: "Profile picture"
+      height: "Height"
+      weight: "Weight"
+      introduction: "Introduction"
+
+  notifications:
+    index:
+      followed_you: "followed you!" 
+      ago: " ago"
+      delete: "Delete all"
+  
+  favorites:
+    followings:
+      profile_image: "Profile picture"
+      nickname: "Nickname"
+      follows: "Followings"
+      followers: "Followers"
+      following_people: " followings"
+      follower_people: " followers"
+    followers:
+      profile_image: "Profile picture"
+      nickname: "Nickname"
+      follows: "Followings"
+      followers: "Followers"
+      following_people: " followings"
+      follower_people: " followers" 
+  
+  searches:
+    search:
+      profile_image: "Profile picture"
+      nickname: "Nickname"
+      height: "Height"
+      weight: "Weight"
+      introduction: "Introduction"
+      follow: "Follow"

@@ -7,12 +7,12 @@
                     <% if @users.present? %>
                     <thead>
                         <tr>
-                            <th class="text-center text-nowrap">プロフィール画像</th>
-                            <th class="text-center text-nowrap">友達一覧</th>
-                            <th class="text-center text-nowrap">身長</th>
-                            <th class="text-center text-nowrap">体重</th>
-                            <th class="text-center text-nowrap">自己紹介</th>
-                            <th class="text-center text-nowrap">フォローボタン</th>
+                            <th class="text-center text-nowrap"><%= t 'searches.search.profile_image' %></th>
+                            <th class="text-center text-nowrap"><%= t 'searches.search.nickname' %></th>
+                            <th class="text-center text-nowrap"><%= t 'searches.search.height' %></th>
+                            <th class="text-center text-nowrap"><%= t 'searches.search.weight' %></th>
+                            <th class="text-center text-nowrap"><%= t 'searches.search.introduction' %></th>
+                            <th class="text-center text-nowrap"><%= t 'searches.search.follow' %></th>
                         </tr>
                     </thead>
                     <tbody>
