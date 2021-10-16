@@ -5,31 +5,31 @@
             
             <%= form_with model:@post, id: 'edit_post', url:post_path, local:true do |f| %>
                 <div class="form-group">
-                    <label class="mt-2">日付入力</label>
+                    <label class="mt-2"><%= t 'posts.edit.date' %></label>
                     <p><%= f.date_select :date_on, autofocus: true, class: "form-control name" %></p>
                 </div>
                
                 <div class="form-group">
-                <label>時刻入力</label>
+                <label><%= t 'posts.edit.time' %></label>
                     <p><%= f.time_select :time_at, class: "form-control-file user_image" %></p>
                 </div>
               
                 <div class="form-group">
-                <label>画像アップロード</label>
+                <label><%= t 'posts.edit.upload_picture' %></label>
                     <%= f.attachment_field :post_images_images, multiple: true, class: "form-control-file user_image" %>
                 </div>
               
                 <div class="form-group">
-                <label>筋トレ場所</label>
+                <label><%= t 'posts.edit.workout_place' %></label>
                     <%= f.text_field :place , class: "form-control " %>
                 </div>
                 
                 <div class="form-group">
-                <label>タグ付け</label>
-                    <%= f.text_field :tag_id, value:@tags, class: "form-control", placeholder: "タグが複数の場合は','で区切ってください" %>
+                <label><%= t 'posts.edit.tag' %></label>
+                    <%= f.text_field :tag_id, value:@tags, class: "form-control", placeholder: t('posts.edit.tag_description') %>
                 </div>  
                 
-                <label>筋トレ達成度</label>
+                <label><%= t 'posts.edit.achievement_rate' %></label>
                 <div id="star">
                     <%= f.hidden_field :rate, :value => 'score' %>
                 </div>
@@ -40,17 +40,17 @@
                 
                 
                 <div class="form-group mt-3">
-                <label>タイトル</label>
+                <label><%= t 'posts.edit.title' %></label>
                     <%= f.text_field :title , class: "form-control" %>
                 </div>
 
                 <div class="form-group">
-                <label>筋トレ内容</label>
+                <label><%= t 'posts.edit.content' %></label>
                     <%= f.text_area :content , class: "form-control" %>
                 </div>
               
                 <div class="form-group">
-                    <%= f.submit "update", class: "btn btn-primary button" %>
+                    <%= f.submit "Update", class: "btn btn-primary button" %>
                 </div>
             <% end %>
         </div>
@@ -60,6 +60,9 @@
 
 <!--レビュー用javascript-->
 <script>
+// ブラウザバックすると☆が増えてしまったので下記を追加
+// 参考記事：https://qiita.com/hana_s_e_0925/items/1a72927b03c01229de07
+ $('#star').empty(); 
  $('#star').raty({
    size: 36,
    starOff: "<%= asset_path('star-off.png') %>",
@@ -97,19 +100,19 @@ $(function(){
 		},
 		  messages: {
             "post[place]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.edit.validation' %>"
 				 },
 			"post[tag_id]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.edit.validation2' %>"
 				 },
 			"#post_rate"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.edit.validation3' %>"
 				 },	
 			"post[title]"  :{
-              			required: "必須項目です。入力をお願いします。"
+              			required: "<%= t 'posts.edit.validation4' %>"
 				 },	
 			"post[content]"  :{
-      			required: "必須項目です。入力をお願いします。"
+      			required: "<%= t 'posts.edit.validation5' %>"
 		 },	
 		     "dummy-input"  :{
       			required: "必須項目です。入力をお願いします。"
@@ -137,7 +140,7 @@ $(document).ready(function(){
             // バリデーションテキストが出力されていなかった場合、処理を実行
             if($("#star_level_valid_message").val() != ""){
                 // inseartAfter(DOM)の後に、左辺のhtml要素を追加
-                $("<p id='star_level_valid_message' style='color:black'>必須項目です。入力をお願いします。</p>").insertAfter("#star");
+                $("<p id='star_level_valid_message' style='color:black'><%= t 'posts.edit.validation5' %></p>").insertAfter("#star");
                 $("#star").css("border-color","red");
                 $("#star").off("click","");
                 $("#star").on("click",function(){

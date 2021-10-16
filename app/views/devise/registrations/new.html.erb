@@ -9,67 +9,67 @@
 
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :ニックネーム %>
+          <label><%= t 'devise.registrations.new.nickname' %></label>
           <%= f.text_field :nickname, autofocus: true, class:"form-control mt-1" %>
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :プロフィール画像 %>
-          <br><%= f.attachment_field :profile_image, class:"mt-1" %>
+          <label><%= t 'devise.registrations.new.profile_image' %></label>
+          <br><%= f.attachment_field :profile_image, class:"mt-1 attachment" %>
         </div>  
       </div>  
-    
+      
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :メールアドレス %><br />
+          <label><%= t 'devise.registrations.new.email_address' %></label>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mt-1" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          (最低<%= @minimum_password_length %>文字入力)
-          <% end %><br />
+          <label><%= t 'devise.registrations.new.password' %></label>
+          <% if @minimum_password_length %><br/>
+          (<%= t'devise.registrations.new.atleast' %><%= @minimum_password_length %><%= t'devise.registrations.new.chracters' %>)
+          <% end %><br/>
           <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :パスワード再入力 %><br />
+          <label><%= t 'devise.registrations.new.confirm_password' %></label>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1" %>
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :身長 %><br />
+          <label><%= t 'devise.registrations.new.height' %></label>
           <%= f.text_field :height, autofocus: true, class:"form-control mt-1" %>
         </div>
       </div>
     
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :体重 %><br />
+          <label><%= t 'devise.registrations.new.weight' %></label>
           <%= f.text_field :weight, autofocus: true, class:"form-control mt-1" %>
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :性別 %><br />
-          <%= f.select :gender, User.genders.keys, autofocus: true %>
+          <label><%= t 'devise.registrations.new.gender' %></label></br>
+          <%= f.select :gender, User.genders_i18n.invert %>
           <!--モデル名＋モデルに記載のカラムの複数形(なぜなら選択肢は複数あるため-->
         </div>
       </div>
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
-          <%= f.label :自己紹介 %><br />
+          <label><%= t 'devise.registrations.new.introduction' %></label>
           <%= f.text_area :introduction, autofocus: true, class:"form-control" %>
         </div>
       </div>
@@ -94,7 +94,8 @@ $(function(){
 					required: true
 				 },
           "user[email]": {
-					required: true
+					required: true,
+　　      email: true
 				 },	
           "user[password]": {
 					required: true,
@@ -121,30 +122,31 @@ $(function(){
 		  },
 		  messages: {
       "user[nickname]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'devise.registrations.new.validation' %>"
 				 },
 			"user[email]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'devise.registrations.new.validation2' %>",
+						email: "<%= t 'devise.registrations.new.validation_email' %>"
 				 },
 			"user[password]"  :{
-						required: "必須項目です。入力をお願いします。",
-	          minlength: "「パスワード」は6文字以上で入力してください"
+						required: "<%= t 'devise.registrations.new.validation3' %>",
+	          minlength: "<%= t 'devise.registrations.new.validation_min' %>"
 				 },	
 			"user[password_confirmation]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            minlength: "「パスワード」は6文字以上で入力してください",
-            equalTo: "「パスワード」が一致していません",
+      			required: "<%= t 'devise.registrations.new.validation4' %>",
+            minlength: "<%= t 'devise.registrations.new.validation_min2' %>",
+            equalTo: "<%= t 'devise.registrations.new.validation_match' %>",
 				 },	
 			"user[height]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            number: "半角数値を入力してください。"
+      			required: "<%= t 'devise.registrations.new.validation5' %>",
+            number: "<%= t 'devise.registrations.new.validation_height' %>"
 				 },					 
 			"user[weight]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            number: "半角数値を入力してください。"
+      			required: "<%= t 'devise.registrations.new.validation6' %>",
+            number: "<%= t 'devise.registrations.new.validation_weight' %>"
 				 },	
 			"user[introduction]"  :{
-      			required: "必須項目です。入力をお願いします。",
+      			required: "<%= t 'devise.registrations.new.validation7' %>",
 				 },			 
       },
    }) 

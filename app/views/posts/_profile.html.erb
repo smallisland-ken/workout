@@ -5,7 +5,8 @@
     <div class="card-body text-center">
         <div>
             <p><i class="far fa-user"></i> <%= profile.nickname %></p>
-            <p>身長：<%= profile.height %>cm 体重：<%= profile.weight %>kg</p>
+            <!--１つ下のtメソッドはi18nで多言語化するために記載-->
+            <p><%= t 'posts.index.height' %>：<%= profile.height %>cm <%= t 'posts.index.weight' %>：<%= profile.weight %>kg</p>
             <p>Followings <%= link_to profile.followings.count, user_followings_path(profile) %> 人</p>
             <p>Followers <%= link_to profile.followers.count, user_followers_path(profile) %> 人</p>
         </div>

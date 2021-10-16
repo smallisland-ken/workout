@@ -5,31 +5,31 @@
             
            <%= form_with model:@post, id: 'new_post', local:true do |f| %>
                 <div class="form-group">
-                    <label class="mt-2">日付入力</label>
+                    <label class="mt-2"><%= t 'posts.new.date' %></label>
                     <p><%= f.date_select :date_on, autofocus: true, class: "form-control name" %></p>
                 </div>
                
                 <div class="form-group">
-                <label>時刻入力</label>
+                <label><%= t 'posts.new.time' %></label>
                     <p><%= f.time_select :time_at, class: "form-control-file user_image" %></p>
                 </div>
               
                 <div class="form-group">
-                <label>画像アップロード</label>
+                <label><%= t 'posts.new.upload_picture' %></label>
                     <%= f.attachment_field :post_images_images, multiple: true, class: "form-control-file user_image" %>
                 </div>
               
                 <div class="form-group">
-                <label>筋トレ場所</label>
+                <label><%= t 'posts.new.workout_place' %></label>
                     <%= f.text_field :place , autofocus: true, class: "form-control" %>
                 </div>
                 
                 <div class="form-group">
-                    <label>タグ付け</label>
-                    <%= f.text_area :tag_id, autofocus: true, class: "form-control", placeholder: "タグが複数の場合は','で区切ってください" %>
+                    <label><%= t 'posts.new.tag' %></label>
+                    <%= f.text_area :tag_id, autofocus: true, class: "form-control", placeholder: t('posts.new.tag_description') %>
                 </div>
 
-                <label>筋トレ達成度</label>
+                <label><%= t 'posts.new.achievement_rate' %></label>
                 <div class="form-group" id="star">
                     <%= f.hidden_field :rate, :value => 'score' %>
                 </div>
@@ -39,17 +39,17 @@
                 </div>
 
                 <div class="form-group mt-3">
-                <label>タイトル</label>
+                <label><%= t 'posts.new.title' %></label>
                     <%= f.text_field :title , autofocus: true, class: "form-control" %>
                 </div>
 
                 <div class="form-group">
-                <label>筋トレ内容</label>
+                <label><%= t 'posts.new.content' %></label>
                     <%= f.text_area :content , autofocus: true, class: "form-control" %>
                 </div>
               
                 <div class="form-group">
-                    <%= f.submit "submit", class: "btn btn-primary button" %>
+                    <%= f.submit "Submit", class: "btn btn-primary button" %>
                 </div>
             <% end %>
         </div>
@@ -99,22 +99,22 @@ $(function(){
 		},
 		  messages: {
             "post[place]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.new.validation' %>"
 				 },
 			"post[tag_id]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.new.validation2' %>"
 				 },
 			"#post_rate"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.new.validation3' %>"
 				 },	
 			"post[title]"  :{
-              			required: "必須項目です。入力をお願いします。"
+              			required: "<%= t 'posts.new.validation4' %>"
 				 },	
 			"post[content]"  :{
-      			required: "必須項目です。入力をお願いします。"
+      			required: "<%= t 'posts.new.validation5' %>"
 		 },	
 		     "dummy-input"  :{
-      			required: "必須項目です。入力をお願いします。"
+      			required: "<%= t 'posts.new.validation5' %>"
 		 },	
       },
    }) 
@@ -138,7 +138,7 @@ $(document).ready(function(){
             // バリデーションテキストが出力されていなかった場合、処理を実行
             if($("#star_level_valid_message").val() != ""){
                 // inseartAfter(DOM)の後に、左辺のhtml要素を追加
-                $("<p id='star_level_valid_message' style='color:black'>必須項目です。入力をお願いします。</p>").insertAfter("#star");
+                $("<p id='star_level_valid_message' style='color:black'><%= t 'posts.new.validation5' %></p>").insertAfter("#star");
                 $("#star").css("border-color","red");
                 $("#star").off("click","");
                 $("#star").on("click",function(){

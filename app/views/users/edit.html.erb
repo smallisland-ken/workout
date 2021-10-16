@@ -20,27 +20,27 @@
                 
            <%= form_with model:@user, id: 'edit_user', local:true do |f| %>
                 <div class="form-group mt-3">
-                    <label>ニックネーム</label>
+                    <label><%= t 'users.edit.nickname' %></label>
                     <%= f.text_field :nickname, autofocus: true, class: "form-control" %>
                 </div>
                
                 <div class="form-group">
-                <label>プロフィール画像</label>
+                <label><%= t 'users.edit.profile_image' %></label>
                     <%= f.attachment_field :profile_image, class: "form-control-file user_image" %>
                 </div>
                
                 <div class="form-group">
-                <label>身長</label>
+                <label><%= t 'users.edit.height' %></label>
                     <%= f.text_field :height , class: "form-control" %>
                 </div>
                
                 <div class="form-group">
-                <label>体重</label>
+                <label><%= t 'users.edit.weight' %></label>
                     <%= f.text_field :weight , class: "form-control" %>
                 </div>
                 
                 <div class="form-group">
-                <label>自己紹介</label>
+                <label><%= t 'users.edit.introduction' %></label>
                     <%= f.text_area :introduction , class: "form-control" %>
                 </div>
               
@@ -61,58 +61,33 @@ $(function(){
 				 "user[nickname]": {
 					required: true
 				 },
-          "user[email]": {
-					required: true
-				 },	
-          "user[password]": {
-					required: true,
-                    minlength: 6
-				 },
-				  "user[password_confirmation]": {
-					required: true,
-                    minlength: 6,
-          equalTo: "#user_password"
-
-				 },
-				 	"user[height]": {
+				 "user[height]": {
 					required: true,
                     number: true
 				 },
-				 	"user[weight]": {
+				 "user[weight]": {
 					required: true,
                     number: true
 				 },
-				 	"user[introduction]": {
+				 "user[introduction]": {
 					required: true,
 				 },
 				 
 		  },
 		  messages: {
       "user[nickname]"  :{
-						required: "必須項目です。入力をお願いします。"
+			    required: "<%= t 'users.edit.validation' %>"
 				 },
-			"user[email]"  :{
-						required: "必須項目です。入力をお願いします。"
-				 },
-			"user[password]"  :{
-						required: "必須項目です。入力をお願いします。",
-	          minlength: "「パスワード」は6文字以上で入力してください"
-				 },	
-			"user[password_confirmation]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            minlength: "「パスワード」は6文字以上で入力してください",
-            equalTo: "「パスワード」が一致していません",
-				 },	
 			"user[height]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            number: "半角数値を入力してください。"
+      			required: "<%= t 'users.edit.validation2' %>",
+            number: "<%= t 'users.edit.validation_number' %>"
 				 },					 
 			"user[weight]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            number: "半角数値を入力してください。"
+      			required: "<%= t 'users.edit.validation3' %>",
+            number: "<%= t 'users.edit.validation_number2' %>"
 				 },	
 			"user[introduction]"  :{
-      			required: "必須項目です。入力をお願いします。",
+      			required: "<%= t 'users.edit.validation4' %>",
 				 },			 
       },
    }) 

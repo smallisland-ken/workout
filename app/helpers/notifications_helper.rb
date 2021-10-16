@@ -7,7 +7,7 @@ module NotificationsHelper
     # notification.actionがfollowかlikeかcommentか
     case notification.action
     when "follow"
-      tag.a(notification.visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") + "があなたをフォロー！"
+      tag.a(notification.visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") + t('notifications.index.followed_you')
     when "like"
       tag.a(notification.visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にいいね！"
     when "comment" then
