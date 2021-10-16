@@ -8,7 +8,7 @@
             <%= comment.content %>
             <div class="text-right mt-3 mb-3">
                 <% if comment.user == current_user %>
-                    <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => "本当に消しますか？", class: "btn-sm btn-danger" %></td>
+                    <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => t('comments.create.delete_confirm'), class: "btn-sm btn-danger" %></td>
                 <% end %>
             </div>
         </div>

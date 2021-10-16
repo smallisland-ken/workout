@@ -100,19 +100,19 @@ $(function(){
 		},
 		  messages: {
             "post[place]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.edit.validation' %>"
 				 },
 			"post[tag_id]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.edit.validation2' %>"
 				 },
 			"#post_rate"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'posts.edit.validation3' %>"
 				 },	
 			"post[title]"  :{
-              			required: "必須項目です。入力をお願いします。"
+              			required: "<%= t 'posts.edit.validation4' %>"
 				 },	
 			"post[content]"  :{
-      			required: "必須項目です。入力をお願いします。"
+      			required: "<%= t 'posts.edit.validation5' %>"
 		 },	
 		     "dummy-input"  :{
       			required: "必須項目です。入力をお願いします。"
@@ -140,7 +140,7 @@ $(document).ready(function(){
             // バリデーションテキストが出力されていなかった場合、処理を実行
             if($("#star_level_valid_message").val() != ""){
                 // inseartAfter(DOM)の後に、左辺のhtml要素を追加
-                $("<p id='star_level_valid_message' style='color:black'>必須項目です。入力をお願いします。</p>").insertAfter("#star");
+                $("<p id='star_level_valid_message' style='color:black'><%= t 'posts.edit.validation5' %></p>").insertAfter("#star");
                 $("#star").css("border-color","red");
                 $("#star").off("click","");
                 $("#star").on("click",function(){

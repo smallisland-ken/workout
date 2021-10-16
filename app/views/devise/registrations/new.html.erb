@@ -17,10 +17,10 @@
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <label><%= t 'devise.registrations.new.profile_image' %></label>
-          <br><%= f.attachment_field :profile_image, class:"mt-1" %>
+          <br><%= f.attachment_field :profile_image, class:"mt-1 attachment" %>
         </div>  
       </div>  
-    
+      
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <label><%= t 'devise.registrations.new.email_address' %></label>
@@ -62,8 +62,7 @@
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <label><%= t 'devise.registrations.new.gender' %></label></br>
-          <!--<= select :user, :gender, User.genders.map { |k, v| [t("enums.user.gender.#{k}"), v] } %>-->
-          <%= f.select :gender, User.genders.keys, autofocus: true %>
+          <%= f.select :gender, User.genders_i18n.invert %>
           <!--モデル名＋モデルに記載のカラムの複数形(なぜなら選択肢は複数あるため-->
         </div>
       </div>
@@ -95,7 +94,8 @@ $(function(){
 					required: true
 				 },
           "user[email]": {
-					required: true
+					required: true,
+　　      email: true
 				 },	
           "user[password]": {
 					required: true,
@@ -122,30 +122,31 @@ $(function(){
 		  },
 		  messages: {
       "user[nickname]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'devise.registrations.new.validation' %>"
 				 },
 			"user[email]"  :{
-						required: "必須項目です。入力をお願いします。"
+						required: "<%= t 'devise.registrations.new.validation2' %>",
+						email: "<%= t 'devise.registrations.new.validation_email' %>"
 				 },
 			"user[password]"  :{
-						required: "必須項目です。入力をお願いします。",
-	          minlength: "「パスワード」は6文字以上で入力してください"
+						required: "<%= t 'devise.registrations.new.validation3' %>",
+	          minlength: "<%= t 'devise.registrations.new.validation_min' %>"
 				 },	
 			"user[password_confirmation]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            minlength: "「パスワード」は6文字以上で入力してください",
-            equalTo: "「パスワード」が一致していません",
+      			required: "<%= t 'devise.registrations.new.validation4' %>",
+            minlength: "<%= t 'devise.registrations.new.validation_min2' %>",
+            equalTo: "<%= t 'devise.registrations.new.validation_match' %>",
 				 },	
 			"user[height]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            number: "半角数値を入力してください。"
+      			required: "<%= t 'devise.registrations.new.validation5' %>",
+            number: "<%= t 'devise.registrations.new.validation_height' %>"
 				 },					 
 			"user[weight]"  :{
-      			required: "必須項目です。入力をお願いします。",
-            number: "半角数値を入力してください。"
+      			required: "<%= t 'devise.registrations.new.validation6' %>",
+            number: "<%= t 'devise.registrations.new.validation_weight' %>"
 				 },	
 			"user[introduction]"  :{
-      			required: "必須項目です。入力をお願いします。",
+      			required: "<%= t 'devise.registrations.new.validation7' %>",
 				 },			 
       },
    }) 
