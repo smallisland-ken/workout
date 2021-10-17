@@ -65,8 +65,10 @@
                             <%= f.select :search, options_for_select([[ t('application.application.partial_match'),"partial_match"],[t('application.application.perfect_match'),"perfect_match"], [t('application.application.forward_match'),"forward_match"],  [t('application.application.backward_match'),"backward_match"]]), class:"mr-2" %>
                             <%= f.submit "Search", class:"btn btn-outline-success ml-2 mt-2" %>
                         <% end %>
-                        <br><%= link_to('日本語', :locale => 'ja') %>
-                        <%= link_to('English', :locale => 'en') %>
+                        <div class="language-text">
+                        <%= link_to '日本語', :locale => 'ja' %>
+                        <%= link_to 'English', :locale => 'en' %>
+                        </div>
                     </div>
                 </nav>        
             <% else %>
@@ -87,10 +89,13 @@
                             <li class="nav-item">
                                 <%= link_to t('application.application.signin'), new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light mt-1' %>
                             </li>
-                            <br><%= link_to('日本語', :locale => 'ja') %>
-                            <%= link_to('English', :locale => 'en') %>
                         </ul>
-                    </div>            
+                        <div class="language-text">
+                        <%= link_to '日本語', :locale => 'ja' %>
+                        <%= link_to 'English', :locale => 'en' %>
+                        </div>
+                        </div>
+                    </div> 
                 </nav>        
             <% end %>
         </header>

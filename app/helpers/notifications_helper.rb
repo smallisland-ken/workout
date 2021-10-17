@@ -9,10 +9,10 @@ module NotificationsHelper
     when "follow"
       tag.a(notification.visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") + t('notifications.index.followed_you')
     when "like"
-      tag.a(notification.visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にいいね！"
+      tag.a(notification.visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") + t('notifications.index.ga') + tag.a(t('notifications.index.your_comment'), href: post_path(notification.post_id), style: "font-weight: bold;") + t('notifications.index.ni_iine')
     when "comment" then
       @comment = Comment.find_by(id: @visitor_comment)&.content
-      tag.a(@visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にコメント！"
+      tag.a(@visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") +  t('notifications.index.ga2') + tag.a(t('notifications.index.your_comment2'), href: post_path(notification.post_id), style: "font-weight: bold;") + t('notifications.index.ni_iine2')
     end
   end
 

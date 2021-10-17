@@ -34,6 +34,61 @@
     height: 100%;
 }
 
+header{
+    a {
+    color: white;
+    font-family: "游ゴシック";
+    font-weight: bold;
+    }
+    a:hover {
+    color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+// ヘッダーのlocaleリンクのデザイン
+.language-text{
+    padding-top: 58px;
+    margin-left: 10px;
+}
+
+//タブレット縦置きサイズ（768px）以下の設定
+@media screen and (max-width:768px) {
+.language-text{
+    padding-top: 10px;
+    text-align: right;    
+  }
+}
+//  スマートフォンサイズ（425px）以下の際に適用される設定
+@media screen and (max-width:425px) {
+.language-text{
+    padding-top: 10px;
+    text-align: right;    
+  }
+}
+
+// attachmentfieldのデザイン
+.attachment_field{
+    width: 130px;
+    height: 28px;
+}
+
+.attachment_relative{
+    position:relative;
+}    
+
+.attachment-absolute{
+    position:absolute;
+    width: 135px;
+    text-align: center;
+    padding: 5px 0;
+    pointer-events: none;
+    top: 0;
+    left: calc(-0.7%);
+    background-color: #EEEEEE;
+    border-radius:7px;
+    // border: 1px solid;
+}  
+
 // ヘッダーの色
 .header-background{
     background-color: #555555;
