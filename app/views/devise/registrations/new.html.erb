@@ -17,9 +17,15 @@
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">
           <label><%= t 'devise.registrations.new.profile_image' %></label>
-          <br><%= f.attachment_field :profile_image, class:"mt-1 attachment" %>
+          <br>
+          <div class="attachment_relative">
+            <%= f.attachment_field :profile_image, class:"mt-1 attachment_field" %>
+            <div class="attachment-absolute"><%= t 'devise.registrations.new.button' %></div>
+          </div>
         </div>  
-      </div>  
+      </div>
+      
+        
       
       <div class="field">
         <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto mt-3">

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to root_path, success: 'アップデートに成功しました！'
+      redirect_to root_path, success: t('users.edit.edit_success')
     else
       render :edit
     end
