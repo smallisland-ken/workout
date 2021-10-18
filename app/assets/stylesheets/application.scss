@@ -193,8 +193,15 @@ h1.h1 {
 }
 
 // カレンダーの月部分のフォントサイズ
+
 .font-size-calendar {
-    font-size: 33px;
+    font-size: 30px;
+}
+
+@media screen and (max-width:425px) {
+.font-size-calendar {
+    font-size: 25px;
+    }
 }
 
 // カレンダーのタイトルのフォントサイズ

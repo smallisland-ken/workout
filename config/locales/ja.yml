@@ -19,8 +19,8 @@ ja:
         rate: 筋トレ達成度
         
   simple_calendar:
-    previous: "前月"
-    next: "翌月"
+    previous: "<<"
+    next: ">>"
     week: Woche
     year: "年"
 
