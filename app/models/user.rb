@@ -51,11 +51,13 @@ class User < ApplicationRecord
   has_many :reverse_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
+    temp = Notification.where(visitor_id: current_user.id).where(visited_id:id).where(action:'follow')
+
+    # もともとは下記の書き方であったがRails的によくないため上記に書き直した。
+    # temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
+
     if temp.blank?
-      notification = current_user.notifications.new(
-        visited_id: id, action: 'follow'
-      )
+      notification = current_user.notifications.new(visited_id: id, action: 'follow')
       notification.save if notification.valid?
     end
   end
