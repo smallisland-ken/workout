@@ -6,7 +6,8 @@ class LikesController < ApplicationController
     like = current_user.likes.new(post_id: @post.id)
     like.save
     # 通知の作成
-    @post.create_notification_by(current_user)
+    # create_nitifiaction_likeはpostモデルを参照
+    @post.create_notification_like(current_user)
   end
 
   def destroy

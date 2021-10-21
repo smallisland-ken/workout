@@ -76,26 +76,32 @@ class Post < ApplicationRecord
   # 通知機能のアソシエーション
   has_many :notifications, dependent: :destroy
 
-  def create_notification_by(current_user)
-    notification = current_user.notifications.new(
-      post_id: id, visited_id: user_id, action: "like"
-    )
+# 　current_userを書くことでログインしているユーザーの情報のみを引っ張れる　
+  def create_notification_like(current_user)
+    # 下はイイネした記事のパラメーターからnotificationテーブルに必要な
+    # 情報のみを引っ張ってきている
+    notification = current_user.notifications.new(post_id: id, visited_id: user_id, action: "like")
     notification.save if notification.valid?
   end
 
+    # 自分以外の投稿者すべてに通知をする
+    # つまり投稿1にAさん、Bさんの投稿があり、Cさんが新たにコメントするとAさんとBさんに通知が来る
   def create_notification_comment!(current_user, comment_id)
+    # selectはuser_idのみを検索可能
+    # whereはpost_idのidを引っ張ってくる
+    # where.notは自分以外の情報を引っ張ってくる
+    # distinct一意になる。
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-
-    save_notification_comment!(current_user, comment_id, user_id) # if temp_ids.blank?
+    # 通知が一つもない場合に通知がありませんと通知
+    # save_notification_comment!は保存するためのメソッドで下のメソッドを使用
+    save_notification_comment!(current_user, comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
-    notification = current_user.notifications.new(
-      post_id: id, comment_id: comment_id, visited_id: visited_id, action: 'comment'
-    )
+    notification = current_user.notifications.new(post_id: id, comment_id: comment_id, visited_id: visited_id, action: 'comment')
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end
