@@ -86,6 +86,7 @@ class Post < ApplicationRecord
 
     # 自分以外の投稿者すべてに通知をする
     # つまり投稿1にAさん、Bさんの投稿があり、Cさんが新たにコメントするとAさんとBさんに通知が来る
+    # comment_idにはcomment
   def create_notification_comment!(current_user, comment_id)
     # selectはuser_idのみを検索可能
     # whereはpost_idのidを引っ張ってくる
@@ -95,7 +96,6 @@ class Post < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-    # 通知が一つもない場合に通知がありませんと通知
     # save_notification_comment!は保存するためのメソッドで下のメソッドを使用
     save_notification_comment!(current_user, comment_id, user_id)
   end

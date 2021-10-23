@@ -1,1 +1,3 @@
+<!--@postが実際に動いている内容としてはlikes_controllerが発火しているので@postが必要となる-->
+<!--@postとしないとno methodエラーとなってしまう。-->
 $('#likes_<%= @post.id %>').html("<%= j(render partial: 'likes/like', locals: {post: @post}) %>");
