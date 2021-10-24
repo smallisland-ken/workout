@@ -102,6 +102,7 @@ class Post < ApplicationRecord
 
   def save_notification_comment!(current_user, comment_id, visited_id)
     notification = current_user.notifications.new(post_id: id, comment_id: comment_id, visited_id: visited_id, action: 'comment')
+    # 自分自身の投稿に自分がコメントをしたら通知はいらないのでtrueにする。
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end

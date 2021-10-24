@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       @comment_item.create_notification_comment!(current_user, @comment.id)
     end
+    # 投稿に紐づくコメントをすべて表示する
     @post_comments = @post.comments
   end
 
