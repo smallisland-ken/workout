@@ -1,4 +1,5 @@
 # SNS型筋トレアプリ
+![image](/workout/app/assets/images/toppage.png)
 
 ～ Workout with friends ～  
 筋トレの友達をさがそう！  
