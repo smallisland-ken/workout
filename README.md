@@ -1,5 +1,5 @@
 # SNS型筋トレアプリ
-![image](/workout/app/assets/images/toppage.png)
+![トップページ](https://user-images.githubusercontent.com/84826887/138855434-83c0206b-e761-42d3-94ca-8a7d39d2648a.png)
 
 ～ Workout with friends ～  
 筋トレの友達をさがそう！  
