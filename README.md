@@ -1,4 +1,4 @@
-# Workout with　Friends
+# Workout with Friends
 
 ![トップページ](https://user-images.githubusercontent.com/84826887/138856474-6b8e6f98-cca1-4200-a5cf-7bb2d83a9a19.png)
 
