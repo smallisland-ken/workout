@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = @post.id
-    @comment_item = @comment.post
+    @comment_item = @comment.post # 5行で同じことをしているので実質不要
     if @comment.save
       @comment_item.create_notification_comment!(current_user, @comment.id)
     end
