@@ -76,10 +76,11 @@ class Post < ApplicationRecord
   # 通知機能のアソシエーション
   has_many :notifications, dependent: :destroy
 
-# 　current_userを書くことでログインしているユーザーの情報のみを引っ張れる　
+  #current_userを書くことでログインしているユーザーの情報のみを引っ張れる　
   def create_notification_like(current_user)
     # 下はイイネした記事のパラメーターからnotificationテーブルに必要な
     # 情報のみを引っ張ってきている
+    # user_idは@postにuser_idが入っているので、それを活用している。
     notification = current_user.notifications.new(post_id: id, visited_id: user_id, action: "like")
     notification.save if notification.valid?
   end
