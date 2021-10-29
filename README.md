@@ -62,7 +62,7 @@ webアプリほとんどなかったので...　　
 ER図：  
 ![image](https://user-images.githubusercontent.com/84826887/135999529-688de07f-e34a-4af3-8979-bb7a59c3fee3.png)
 
-【UIフロー】　　　　
+【UIフロー】　　
 https://docs.google.com/presentation/d/1cN2Ms0dFmZO0SSdd6cVxX4iVi0Gcsdsy/edit?usp=sharing&ouid=108696171954783896322&rtpof=true&sd=true
 
 【アプリケーション詳細設計書】　　 
