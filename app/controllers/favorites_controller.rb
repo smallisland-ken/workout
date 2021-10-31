@@ -7,6 +7,7 @@ class FavoritesController < ApplicationController
     # そして受け取った値をモデルのメソッドに受け渡している
     @user = User.find(params[:user_id])
     current_user.follow(params[:user_id])
+    #フォローの通知機能
     @user.create_notification_follow!(current_user)
     redirect_to request.referer
   end

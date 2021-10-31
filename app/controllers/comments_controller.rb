@@ -6,9 +6,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = @post.id
-    @comment_item = @comment.post # 5行で同じことをしているので実質不要
+    # 10行目は5行で同じことをしているので実質不要
+    @comment_item = @comment.post
     if @comment.save
-      @comment_item.create_notification_comment!(current_user, @comment.id)
+     @comment_item.create_notification_comment!(current_user, @comment.id)
     end
     # 投稿に紐づくコメントをすべて表示する
     @post_comments = @post.comments

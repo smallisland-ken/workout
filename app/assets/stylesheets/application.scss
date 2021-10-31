@@ -45,6 +45,10 @@ header{
     }
 }
 
+.nav-item-hover:hover{
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
 // ヘッダーのlocaleリンクのデザイン
 .language-text{
     padding-top: 58px;
