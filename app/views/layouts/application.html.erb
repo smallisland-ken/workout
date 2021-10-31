@@ -46,13 +46,19 @@
                             <li class="nav-item">
                                 <%= link_to t('application.application.calendar'), calendar_posts_path, method: :get, class: 'fas fa-calendar nav-link text-light mt-1' %>
                             </li>
-                            <li class="nav-item">
                             <!--通知があった際に色が出るように表示-->
                             <% if unread_notifications.any? %>
-                                <i class="fa fa-circle" style="color: gold;"></i>
+                            <!--ベルの色だけを金色に変えたい-->
+                            <li class="nav-item">
+                            <%= link_to notifications_path, class: "fas fa-bell nav-link mt-1  nav-item-hover", style: "color:gold;" do %>
+                                <span style="color: white" class="nav-item-hover"><%= t('application.application.notification') %></span>
                             <% end %>
+                            </li>
+                            <% else %>
+                            <li class="nav-item">
                                 <%= link_to t('application.application.notification'), notifications_path, method: :get, class: 'fas fa-bell nav-link text-light mt-1' %>
                             </li>
+                            <% end %>
                             <li class="nav-item">
                                 <%= link_to t('application.application.mypage'), edit_user_path(current_user.id), method: :get, class: 'fas fa-user-friends nav-link text-light mt-1' %>
                             </li>

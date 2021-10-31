@@ -45,6 +45,10 @@ header{
     }
 }
 
+.nav-item-hover:hover{
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
 // ヘッダーのlocaleリンクのデザイン
 .language-text{
     padding-top: 58px;
@@ -202,7 +206,15 @@ h1.h1 {
 .font-size-calendar {
     font-size: 25px;
     }
+    
+.bell-word{
+    margin-right:15px;
 }
+    
+}
+
+
+
 
 // カレンダーのタイトルのフォントサイズ
 .calendar-font {

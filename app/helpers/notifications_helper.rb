@@ -15,9 +15,10 @@ module NotificationsHelper
       tag.a(@visitor.nickname, href: friend_posts_path(@visitor), style: "font-weight: bold;") +  t('notifications.index.ga2') + tag.a(t('notifications.index.your_comment2'), href: post_path(notification.post_id), style: "font-weight: bold;") + t('notifications.index.ni_iine2')
     end
   end
-
+  
   def unread_notifications
     # notificationテーブルでデフォルトでfalseが入っている
+    
     @notifications = current_user.reverse_notifications.where(checked: false)
   end
 end
