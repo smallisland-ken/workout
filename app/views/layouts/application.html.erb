@@ -50,6 +50,7 @@
                             <% if unread_notifications.any? %>
                             <!--ベルの色だけを金色に変えたい-->
                             <li class="nav-item">
+                            <!--link_toのnav-item-hoverは親関係なのでspanの子に反映されるはずだが反映されなかったので子にもbell-item-hoberを付与-->
                             <%= link_to notifications_path, class: "fas fa-bell nav-link mt-1  nav-item-hover", style: "color:gold;" do %>
                                 <span style="color: white" class="nav-item-hover"><%= t('application.application.notification') %></span>
                             <% end %>

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   # これをいれることでlocaleをパスに含められる
   # scopeを使用するとurlパターンのみを変更可能
-  scope '(:locale)' do  
+  # locale => /en|ja/ doと書かないとdeviseのパスワード再発行でi18nの影響でエラーになる
+  scope '(:locale)', :locale => /en|ja/ do  
     
     # postのindexをルートに設定
     root 'posts#index'

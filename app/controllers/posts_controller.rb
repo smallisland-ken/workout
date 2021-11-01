@@ -51,8 +51,10 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    # これはなぜ:postがある？
     tags = params[:post][:tag_id].split(',')
     if @post.save
+    # インスタンス変数をつける意味は？
       @post.save_tags(tags)
       redirect_to root_path, success: t('posts.create.create_success')
     else
@@ -67,8 +69,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    # これはなぜ:postがある？
+    # :postパラメータの中のtag_idだけを取得している。
     tags = params[:post][:tag_id].split(',')
-    if @post.update_attributes(post_params)
+    if @post.update(post_params)
+    # インスタンス変数をつける意味は？
       @post.update_tags(tags)
       redirect_to root_path, success: t('posts.edit.edit_success')
     else
@@ -78,6 +83,7 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
+    #dependentがだからしていしなくてもすべて削除される？
     post.destroy
     redirect_to root_path, success: t('posts.destroy.destroy_success')
   end
