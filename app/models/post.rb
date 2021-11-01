@@ -39,7 +39,6 @@ class Post < ApplicationRecord
   # タグ付けの新規投稿用メソッド
   def save_tags(tags)
     tags.each do |new_tags|
-      # selfは？
       # selfは明示的に記載していてこの場合だとコントローラーの@postになる
       # tag_relationshipsがthroughしているのでtagsでアソシエーションを指定すると中間テーブルを通過した際に保存される。
       self.tags.find_or_create_by(name: new_tags)
