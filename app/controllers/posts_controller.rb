@@ -51,8 +51,10 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    #:postはpostで投稿されてきた際にパラメーターとして飛ばされ、その中の[:tag_id]を取得して、splitで,区切りにしている
     tags = params[:post][:tag_id].split(',')
     if @post.save
+    #@postをつけることpostモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
       @post.save_tags(tags)
       redirect_to root_path, success: t('posts.create.create_success')
     else
@@ -67,8 +69,10 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tags = params[:post][:tag_id].split(',')
-    if @post.update_attributes(post_params)
+    #:postはpostで投稿されてきた際にパラメーターとして飛ばされ、その中の[:tag_id]を取得して、splitで,区切りにしている
+。  tags = params[:post][:tag_id].split(',')
+    if @post.update(post_params)
+    #@postをつけることpostモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
       @post.update_tags(tags)
       redirect_to root_path, success: t('posts.edit.edit_success')
     else
