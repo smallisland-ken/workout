@@ -202,6 +202,11 @@ h1.h1 {
     font-size: 36px;
 }
 
+// JqueryValidationのエラー文の色
+.validate-error-color{
+    color:red;
+}
+
 @media screen and (max-width:425px) {
 .font-size-calendar {
     font-size: 25px;

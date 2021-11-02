@@ -48,7 +48,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mx-auto">
-                    <%= form_with model:[@post, @comment], local: false do |f| %>
+                    <%= form_with model:[@post, @comment], id: 'comment', local: false do |f| %>
                         <%= f.text_area :content, rows:'5',placeholder: "Any comments on this post?", class:"form-control mt-3"  %>
                         <div class="text-right">
                             <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
@@ -67,3 +67,22 @@
     <div class="mb-3">
     </div>
 </div>
+
+<!--バリデーション-->
+<script>
+$(function(){
+ $('#comment').validate({
+  errorClass: 'validate-error-color',     
+  rules : {
+   "comment[content]": {
+    required: true
+     },
+   },
+  messages: {
+    "comment[content]"  :{
+    required: "<%= t 'posts.new.validation' %>"
+     },
+   },
+ }) 
+})
+</script>
