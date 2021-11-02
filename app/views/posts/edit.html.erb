@@ -144,7 +144,7 @@ $(document).ready(function(){
             // バリデーションテキストが出力されていなかった場合、処理を実行
             if($("#star_level_valid_message").val() != ""){
                 // inseartAfter(DOM)の後に、左辺のhtml要素を追加
-                $("<p id='star_level_valid_message' style='color:black'><%= t 'posts.edit.validation5' %></p>").insertAfter("#star");
+                $("<p id='star_level_valid_message' style='color:red'><%= t 'posts.edit.validation5' %></p>").insertAfter("#star");
                 $("#star").css("border-color","red");
                 $("#star").off("click","");
                 $("#star").on("click",function(){
