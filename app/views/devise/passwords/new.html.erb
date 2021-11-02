@@ -21,6 +21,7 @@
 <script>
 $(function(){
   $('#new_user').validate({
+  errorClass: 'validate-error-color',     
 	rules : {
 		  "user[email]"  : {
 			required: true,
